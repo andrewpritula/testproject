@@ -14,41 +14,36 @@ import Css from '../src/pages/Css'
 function Page() {
     return (
         <div id='page'>
-            <header>
-                <h1>Testproject</h1>
+            <header className="header">
+                <h1 className="header-title">Testproject</h1>
+                <div className="header-right">
+                    <a href="/" className="nav-link">VCS</a>
+                    <a href="/git" className="nav-link">Git</a>
+                    <a href="/node" className="nav-link">NodeJS</a>
+                    <a href="/npm" className="nav-link">Npm</a>
+                    <a href="/html" className="nav-link">Html</a>
+                    <a href="/css" className="nav-link">CSS</a>
+                </div>
             </header>
-            <section class="overview">
-	            <h2>Testproject for onix internship</h2>
-            </section>
-            <nav>
-                <ul>
-                    <li><a href="/">VCS</a></li>
-                    <li><a href="/git">Git</a></li>
-	                <li><a href="/node">NodeJS</a></li>
-                    <li><a href="/npm">Npm</a></li>
-	                <li><a href="/html">Html</a></li>
-                    <li><a href="/css">CSS</a></li>
-                </ul>
-            </nav>
-  
-            <article id='article'>
-                <Router>
-                    <Switch>
-                        <Route exact path = "/" component={VCS}/>
-                        <Route exact path = "/git" component={Git}/>
-                        <Route exact path = "/node" component={NodeJS}/>
-                        <Route exact path = "/npm" component={Npm}/>
-                        <Route exact path = "/html" component={Html}/>
-                        <Route exact path = "/css" component={Css}/>
-                    </Switch>
-                </Router>
-            </article>
 
-            <footer>
-                <ul>
-                    <li>Andrew Pritula</li>
-                    <li><a href="https://github.com/andrewpritula">GitHub profile</a></li>
-                    <li><a href="https://dribbble.com/shots/14867346-Harman">Original design</a></li>
+            <section className="overview">
+                    <Router>
+                        <Switch>
+                            <Route exact path = "/" component={VCS}/>
+                            <Route exact path = "/git" component={Git}/>
+                            <Route exact path = "/node" component={NodeJS}/>
+                            <Route exact path = "/npm" component={Npm}/>
+                            <Route exact path = "/html" component={Html}/>
+                            <Route exact path = "/css" component={Css}/>
+                        </Switch>
+                    </Router>
+            </section>
+
+            <footer className="footer">
+                <ul className="footer-nav">
+                    <li className="footer-nav-item">Andrew Pritula</li>
+                    <li className="footer-nav-item"><a href="https://github.com/andrewpritula" className="footer-link">GitHub profile</a></li>
+                    <li className="footer-nav-item"><a href="https://dribbble.com/shots/14867346-Harman" className="footer-link">Original design</a></li>
                 </ul>
             </footer>
         </div>
