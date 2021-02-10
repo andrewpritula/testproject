@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import imgNode from '../img/node.png'
+
 export default class NodeJS extends Component {
     render() {
         return(
@@ -53,6 +55,9 @@ export default class NodeJS extends Component {
                     .load  Load JS from a file into the REPL session<br/>
                     .save  Save all evaluated commands in this REPL session to a file<br/>
                     &gt; .exit</code>
+                </div>
+                <div className="rigth-part">
+                    <img src={imgNode} alt="node" id="node-img" className="overview-img"></img>
                 </div>
             </div>
         )

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import imgCss from '../img/css.png'
+
 export default class Css extends Component {
     render() {
         return(
@@ -56,6 +58,9 @@ export default class Css extends Component {
                         признаков для данного свойства (существует множество значений&nbsp;<code>color</code>, 
                         помимо <code>red</code>).</dd>
                     </dl>
+                </div>
+                <div className="rigth-part">
+                    <img src={imgCss} alt="css" id="css-img" className="overview-img"></img>
                 </div>
             </div>
         )

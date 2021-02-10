@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import imgGit from '../img/git.png'
+
 export default class Git extends Component {
     render() {
         return(
@@ -50,6 +52,9 @@ export default class Git extends Component {
                         [--force-with-lease[=&lt;refname&gt;[:&lt;expect&gt;]] [--force-if-includes]]<br/>
                         [--no-verify] [&lt;repository&gt; [&lt;refspec&gt;…​]]<br/>
                     </code>
+                </div>
+                <div className="rigth-part">
+                    <img src={imgGit} alt="git" id="git-img" className="overview-img"></img>
                 </div>
             </div>
         )

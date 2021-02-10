@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import imgNpm from '../img/npm.png'
+
 export default class Npm extends Component {
     render() {
         return(
@@ -69,6 +71,10 @@ export default class Npm extends Component {
                 $ npm --version<br/>
                 3.7.5</code>
               </div>
+              
+              <div className="rigth-part">
+                    <img src={imgNpm} alt="npm" id="npm-img" className="overview-img"></img>
+                </div>
             </div>
         )
     }

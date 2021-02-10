@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import imgHtml from '../img/html.png'
+
 
 export default class Html extends Component {
     render() {
@@ -34,14 +36,17 @@ export default class Html extends Component {
                     </p>
                     <p>Статьи, представленные ниже, могут помочь вам больше узнать о HTML.</p>
                     <h3>Введение в HTML</h3>
-                    <p>Если вы новичок в веб-разработке, обязательно прочитайте статью 
-                    <a href="https://developer.mozilla.org/ru/docs/Learn/Getting_started_with_the_web/HTML_basics">Основы HTML</a>, 
+                    <p>Если вы новичок в веб-разработке, обязательно прочитайте статью:
+                    <a href="https://developer.mozilla.org/ru/docs/Learn/Getting_started_with_the_web/HTML_basics" className="text-link"> Основы HTML</a>, 
                     чтобы узнать, что такое HTML и как его использовать.
                     </p>
                     <h3>Руководства по HTML</h3>
-                    <p>Статьи о том, как использовать HTML, а также обучающие материалы и исчерпывающие примеры можно найти в разделе.
-                        <a href="https://developer.mozilla.org/ru/docs/Learn/HTML">Пространство изучения HTML</a>, 
+                    <p>Статьи о том, как использовать HTML, а также обучающие материалы и исчерпывающие примеры можно найти в разделе. 
+                        <a href="https://developer.mozilla.org/ru/docs/Learn/HTML" className="text-link"> Пространство изучения HTML</a>, 
                     </p>
+                </div>
+                <div className="rigth-part">
+                    <img src={imgHtml} alt="html" id="html-img" className="overview-img"></img>
                 </div>
             </div>
         )
