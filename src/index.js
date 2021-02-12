@@ -11,9 +11,30 @@ import Npm from '../src/pages/Npm'
 import Html from '../src/pages/Html'
 import Css from '../src/pages/Css'
 
+
+class ListItem {
+ constructor(title, path) {
+     this.title = title;
+     this.path = path;
+ }
+}
+
 const headerTitle = 'Testproject';
-const navList = ['VCS', 'Git', 'Node JS', 'Npm', 'Html', 'CSS'];
-const footerList = ['Andrew Pritula', 'GitHub Profile', 'Original Design'];
+
+const navList = [
+    new ListItem('VCS', '/'),
+    new ListItem('Git', '/git'),
+    new ListItem('Node JS', '/node'),
+    new ListItem('Npm', '/npm'),
+    new ListItem('Html', '/html'),
+    new ListItem('CSS', '/css')
+];
+
+const footerList = [
+    new ListItem('Andrew Pritula', '/'),
+    new ListItem('GitHub Profile', 'https://github.com/andrewpritula'),
+    new ListItem('Original Design', 'https://dribbble.com/shots/14867346-Harman')
+];
 
 class Page extends Component {
     render() {
@@ -23,12 +44,9 @@ class Page extends Component {
                     <h1 className="header-title">{headerTitle}</h1>
                     <div className="header-right">
                         <ul className="nav-header">
-                            <li className="nav-item"><a href="/" className="nav-link">{navList[0]}</a></li>
-                            <li className="nav-item"><a href="/git" className="nav-link">{navList[1]}</a></li>
-                            <li className="nav-item"><a href="/node" className="nav-link">{navList[2]}</a></li>
-                            <li className="nav-item"><a href="/npm" className="nav-link">{navList[3]}</a></li>
-                            <li className="nav-item"><a href="/html" className="nav-link">{navList[4]}</a></li>
-                            <li className="nav-item"><a href="/css" className="nav-link">{navList[5]}</a></li>
+                            {navList.map((value, index) => {
+                               return <li key={index} className="nav-item"><a href={value.path} className="nav-link">{value.title}</a></li>
+                            })}
                         </ul>
                     </div>
                 </header>
@@ -48,10 +66,10 @@ class Page extends Component {
 
                 <footer className="footer">
                     <ul className="footer-nav">
-                        <li className="footer-nav-item">{footerList[0]}</li>
-                        <li className="footer-nav-item"><a href="https://github.com/andrewpritula" className="footer-link">{footerList[1]}</a></li>
-                        <li className="footer-nav-item"><a href="https://dribbble.com/shots/14867346-Harman" className="footer-link">{footerList[2]}</a></li>
-                    </ul>
+                            {footerList.map((value, index) => {
+                               return <li key={index} className="footer-nav-item"><a href={value.path} className="footer-link">{value.title}</a></li>
+                            })}
+                        </ul>
                 </footer>
             </div>
         )
