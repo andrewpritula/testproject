@@ -60,7 +60,47 @@ body {
   padding-right: 100px;
   float: right;
 }
-  
+
+.task3 {
+  background-color: #ff837b;
+  text-align: center;
+  color: black;
+  padding: 20px;
+} 
+
+.table {
+  width: 100%;
+  border: 1px solid black;
+}
+
+td {
+  border: 1px solid black;
+  height: 70px;
+  text-align: left;
+  padding-left: 10px;
+  font-size: 18px;
+}
+
+th {
+  font-size: 24px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.tButton {
+  border: 2px solid black;
+  margin-right: 25px;
+  margin-top: 5px;
+  font-size: 24px;
+  border-radius: 25px;
+}
+
+.tButton:hover {
+  background-color: #212121;
+  color: #ffffff;
+  cursor: pointer;
+}
+
 .container {
   background-color: #ff837b;
   color:#fff;
