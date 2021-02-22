@@ -21,12 +21,11 @@ body {
   overflow: hidden;
   background-color: #ff837b;
   border-radius: 25px 25px 0px 0px;
-  padding: 20px 10px;
+  padding-top: 15px;
 }
 
 .header-title {
   margin: 0;
-  padding-top: 15px;
   padding-left: 100px;
   float: left;
   color: #fff;
@@ -44,8 +43,7 @@ body {
   float: left;
   color: #fff;
   text-align: center;
-  padding: 15px;
-  padding-left: 30px;
+  padding-left: 55px;
   text-decoration: none;
   font-size: 18px; 
   line-height: 25px;
@@ -61,12 +59,17 @@ body {
   float: right;
 }
 
-.task3 {
+.task3-container {
   background-color: #ff837b;
   text-align: center;
   color: black;
-  padding: 20px;
+  padding: 100px;
+  padding-bottom: 0px;
 } 
+
+.task3-overview {
+  margin-bottom: 15px;
+}
 
 .table {
   width: 100%;
@@ -87,12 +90,15 @@ th {
   text-align: center;
 }
 
+.tabble-buttons {
+  margin-top: 15px;
+}
+
 .tButton {
-  border: 2px solid black;
-  margin-right: 25px;
-  margin-top: 5px;
+  border: 1px solid black;
+  margin: 10px;
   font-size: 24px;
-  border-radius: 25px;
+  border-radius: 5px;
 }
 
 .tButton:hover {
@@ -109,7 +115,7 @@ th {
 
 .left-part {
   padding-top: 100px;
-  padding-left: 110px;
+  padding-left: 100px;
   padding-bottom: 100px;
   width: 50%;
   float: left;
@@ -191,16 +197,20 @@ dt {
 }
 
 .footer {
-  overflow: hidden;
+  overflow: auto;
   background-color: #fff;
-  padding: 20px 10px;
 }
 
 .footer-nav {
   float: right;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-right: 100px;
+  padding-left: 0px;
 }
+
 .footer-nav-item {
-  padding: 20px;
+  padding-left: 25px;
   display: inline;
   color: #212121;
 }
