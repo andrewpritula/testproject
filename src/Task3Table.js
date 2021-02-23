@@ -37,7 +37,7 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min; //max and min include
 }
 
-export default class Table extends Component {
+export default class Task3Table extends Component {
     render() {
         return(
             <div className = "task3-container">
@@ -74,4 +74,4 @@ export default class Table extends Component {
     }
 }
 
-render(<Table/>, document.getElementById('task3'));
+render(<Task3Table/>, document.getElementById('task3'));
