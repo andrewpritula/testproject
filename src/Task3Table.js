@@ -40,7 +40,7 @@ function getRandomIntInclusive(min, max) {
 export default class Task3Table extends Component {
     render() {
         return(
-            <div className = "task3-container">
+            <div className = "container tables">
                 <h2 className = "task-overview">Task 3</h2>
                 <table className="table">
                     <thead>
@@ -51,8 +51,8 @@ export default class Task3Table extends Component {
                     </thead>
                     <tbody>
                         {tableItems.map((value, index) => 
-                            <tr>
-                                <td key={index}>{value.year}</td>
+                            <tr key={index}>
+                                <td>{value.year}</td>
                                 <td>{value.event}</td>
                             </tr>
                         )}

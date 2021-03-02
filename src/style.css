@@ -59,16 +59,8 @@ body {
   float: right;
 }
 
-.task3-container {
-  background-color: #ff837b;
+.tables {
   text-align: center;
-  color: black;
-  padding: 100px;
-  padding-bottom: 0px;
-} 
-
-.task3-overview {
-  margin-bottom: 15px;
 }
 
 .table {
@@ -111,18 +103,16 @@ th {
   background-color: #ff837b;
   color:#fff;
   overflow: auto;
+  padding: 100px 100px 0;
 }
 
 .left-part {
-  padding-top: 100px;
-  padding-left: 100px;
-  padding-bottom: 100px;
   width: 50%;
   float: left;
 }
 
 .rigth-part {
-  padding-top: 225px;
+  padding-top: 100px;
   width: 50%;
   float: right;
 }
@@ -154,7 +144,8 @@ th {
 .overview-img {
   display: block;
   margin-left: auto;
-  margin-right: auto
+  margin-right: auto;
+  width: 50%;
 }
 
 #git-img {
