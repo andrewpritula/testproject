@@ -10,7 +10,6 @@ import NodeJS from '../src/pages/NodeJS'
 import Npm from '../src/pages/Npm'
 import Html from '../src/pages/Html'
 import Css from '../src/pages/Css'
-import Task3Table from './Task3Table'
 import Task4Table from './Task4Table'
 
 class ListItem {
@@ -52,9 +51,6 @@ class Page extends Component {
                         </ul>
                     </div>
                 </header>
-                <section className ="task3">
-                    <Task3Table/>
-                </section>
                 <section className ="task4">
                     <Task4Table/>
                 </section>

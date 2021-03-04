@@ -46,51 +46,29 @@ const JamesGosling = {
 //arr of obj
 let goodGuys = [TimBerners, BillGates, JamesGosling];
 
-//copyArr and add new obj to arr
-function addArrItem(arr, obj) {
-    const newArr = [...arr];
-    newArr.push(obj);
-
+function consoleInfo(op = 'default', item, itemCopy) {
     console.clear();
-    console.log('Standart Arr')
-    console.table(arr);
-
-    console.log('Arr copy with new el')
-    console.table(newArr);
-
-    return newArr;
+    console.log(op);
+    console.log('Basic item:');
+    console.table(item);
+    console.log('Item copy');
+    console.table(itemCopy);
 }
 
+// display all keys of obj to console
+// function displayObj(item) {
+//       getProp(item);
 
-//creates arr copy, del element from it, and return it
-function delArrItem(arr) {
-    const newArr = [...arr];
-    newArr.pop();
-
-    console.clear();
-    console.log('Standart Arr')
-    console.table(arr);
-
-    console.log('Arr copy without deleted el')
-    console.table(newArr);
-
-    return newArr;
-}
-
-//display all keys of obj to console
-function displayObj(item) {
-      getProp(item);
-
-      function getProp(o) {
-          for(var prop in o) {
-              if(typeof(o[prop]) === 'object') {
-                  getProp(o[prop]);
-              } else {
-                  console.log('obj.' + prop + " = " + o[prop])
-              }
-          }
-      }
-}
+//       function getProp(o) {
+//           for(var prop in o) {
+//               if(typeof(o[prop]) === 'object') {
+//                   getProp(o[prop]);
+//               } else {
+//                   console.log('obj.' + prop + " = " + o[prop])
+//               }
+//           }
+//       }
+// }
 
 //add el to obj
 //task 5 creates new obj(copy of obj that you push into property and adding new element, default or custom)
@@ -100,13 +78,7 @@ function addEl(obj, item = "newDefaultItem") {
     const newObj = {...obj};
     newObj.newEl = item;
 
-    console.clear();
-    console.log('STANDART OBJ');
-    displayObj(obj);
-    console.log('');
-
-    console.log('NEW OBJ WITH ADDING ELEMENT');
-    displayObj(newObj);
+    consoleInfo('add el', obj, newObj);
 
     console.log(obj === newObj);
     return newObj;
@@ -119,12 +91,7 @@ function deleteEl(obj, item = 'placeOfBirth') {
     const newObj = {...obj}
     delete newObj[item];
 
-    console.clear();
-    console.log('STANDART OBJ');
-    displayObj(obj);
-    console.log('');
-    console.log('NEW OBJ WITHOUT DELETING ELEMENT');
-    displayObj(newObj);
+    consoleInfo('delete el', obj, newObj);
 
     console.log(obj === newObj);
     return newObj;
@@ -137,50 +104,107 @@ function pickByKey(obj, item, value) {
     const newObj = {...obj};
     newObj[item] = value;
 
-    console.clear();
-    console.log('item of standart obj: ' + obj[item]);
-    console.log('item of obj copy: ' + newObj[item]);
+    consoleInfo('pick el by key', obj[item], newObj[item]);
+
     return newObj;
 }
 
 //extend obj by 'spread'
 //creates obj copy by spread operator and adding new item from property
 function spreadTest(obj, item = 'defaultItem') {
-    console.clear();
-    console.log('STANDAT OBJ');
-    const newObj = {...obj, item};
-    displayObj(obj);
-    console.log('');
-    console.log('NEW OBJ AFTER SPREAD');
-    displayObj(newObj);
+    const newObj = {...obj, item}; 
+    
+    consoleInfo('spred obj', obj, newObj);
 
     return newObj;
 }
 
+//copyArr and push new obj to arr
+function pushArrItem(arr, obj) {
+    const newArr = [...arr];
+    newArr.push(obj);
+
+    consoleInfo('push el', arr, newArr);
+
+    return newArr;
+}
+
+//creates arr copy, pop element from it, and return it
+function popArrItem(arr) {
+    const newArr = [...arr];
+    newArr.pop();
+    
+    consoleInfo('pop el', arr, newArr);
+
+    return newArr;
+}
+
+//copyArr and add new obj to arr
+function shiftArrItem(arr) {
+    const newArr = [...arr];
+    newArr.shift();
+
+    consoleInfo('shift el', arr, newArr);
+
+    return newArr;
+}
+
+//creates arr copy, pop element from it, and return it
+function unshiftArrItem(arr, obj) {
+    const newArr = [...arr];
+    newArr.unshift(obj);
+
+    consoleInfo('unshift el', arr, newArr);
+
+    return newArr;
+}
+
+function insertArrItem(arr, position = 1, obj) {
+    const newArr = [...arr];
+    newArr.splice(position, 0, obj);
+
+    consoleInfo('insert el', arr, newArr);
+
+    return newArr;
+}
+
+function delByIndex(arr, index = 2) {
+    const newArr = [...arr];
+    newArr.splice(2, 1);
+
+    consoleInfo('delete el by index', arr, newArr);
+
+    return newArr;
+}
+
 //task5 sort that takes array of obj in first paramether and vaule sort by into second
-function bubbleSort(a, par) {
-    var swapped;
-    const arrCopy = [...a];
+function bubbleSort(arr, par) {
+    let swapped;
+    const newArr = [...arr];
     do {
         swapped = false;
-        for (var i = 0; i < arrCopy.length - 1; i++) {
-            if (arrCopy[i][par] > arrCopy[i + 1][par]) {
-                var temp = arrCopy[i];
-                arrCopy[i] = arrCopy[i + 1];
-                arrCopy[i + 1] = temp;
+        for (let i = 0; i < newArr.length - 1; i++) {
+            if (newArr[i][par] > newArr[i + 1][par]) {
+                let temp = newArr[i];
+                newArr[i] = newArr[i + 1];
+                newArr[i + 1] = temp;
                 swapped = true;
             }
         }
     } while (swapped);
 
-    
-    console.clear();
-    console.log('Standart Arr of Obj');
-    console.table(a);
-    console.log('Sorted Arr copy of Obj');
-    console.table(arrCopy);
+    consoleInfo('bublle sort', arr, newArr);
 
-    return arrCopy;
+    return newArr;
+}
+
+function defaultSort(arr, value = 'age') {
+    const newArr = [...arr];
+    newArr.sort((a, b) => a[value] > b[value] ? 1 : -1);
+
+    consoleInfo('default sort', arr, newArr);
+
+    return newArr;
 }
 
 export default class Task4Table extends Component {
@@ -209,16 +233,25 @@ export default class Task4Table extends Component {
                     </tbody>
                 </table>
                 <div className="tabble-buttons">
+
                     <h3>Work with obj:</h3>
                     <button className="tButton" onClick={(e) => addEl(JamesGosling, 'newCustomEl')}>Add item to obj</button>
                     <button className="tButton" onClick={(e) => deleteEl(JamesGosling, 'age')}>Delete item from obj</button>
                     <button className="tButton" onClick={(e) => pickByKey(JamesGosling, 'age', +22)}>Pick by key</button>
                     <button className="tButton" onClick={(e) => spreadTest(JamesGosling, +11)}>Spread</button>
+                    
                     <h3>Work with arr:</h3>
-                    <button className="tButton" onClick={(e) => bubbleSort(goodGuys, 'yearOfBirth')}>Sort</button>
-                    <button className="tButton" onClick={(e) => addArrItem(goodGuys, {fullname: {name: 'James', sername: 'Bond'}, 
-                        yearOfBirth:1996, placeOfBirth: "Krop", age:24, displayFullname})}>Add el to arr</button>
-                    <button className="tButton" onClick={(e) => delArrItem([1, 2, 3])}>Dell el from arr</button>
+                    <button className="tButton" onClick={(e) => bubbleSort(goodGuys, 'yearOfBirth')}>Bublle Sort</button>
+                    <button className="tButton" onClick={(e) => defaultSort(goodGuys)}>Default Sort</button>
+                    <button className="tButton" onClick={(e) => pushArrItem(goodGuys, {fullname: {name: 'James', sername: 'Bond'}, 
+                        yearOfBirth:1996, placeOfBirth: "Krop", age:24, displayFullname})}>Push</button>
+                    <button className="tButton" onClick={(e) => popArrItem(goodGuys)}>Pop</button>
+                    <button className="tButton" onClick={(e) => unshiftArrItem(goodGuys, 
+                        {fullname : { name : 'Andrew', sername : 'Pritula'}, age : 99, displayFullname})}>Unshift</button>
+                    <button className="tButton" onClick={(e) => shiftArrItem(goodGuys)}>Shift</button>
+                    <button className="tButton" onClick={(e) => insertArrItem(goodGuys, 2, {fullname: {name: 'James', sername: 'Bond'}, 
+                        yearOfBirth:1996, placeOfBirth: "Krop", age:24, displayFullname})}>Insert by index</button>
+                    <button className="tButton" onClick={(e) => delByIndex(goodGuys, 2)}>Delete by index</button>
                 </div>
             </div>
         )
