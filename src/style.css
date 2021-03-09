@@ -214,3 +214,12 @@ dt {
 .footer-nav-item:hover, .footer-link:hover {
   color: #ff837b;
 }
+
+.table-link, .table-link:visited {
+  color : #fff;
+  text-decoration: none;
+}
+
+.table-link:hover{
+  text-decoration: underline;
+}

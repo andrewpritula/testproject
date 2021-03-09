@@ -11,6 +11,7 @@ import Npm from '../src/pages/Npm'
 import Html from '../src/pages/Html'
 import Css from '../src/pages/Css'
 import Task4Table from './Task4Table'
+import Task6 from './Task6'
 
 class ListItem {
  constructor(title, path) {
@@ -44,8 +45,8 @@ class Page extends Component {
                     <h1 className="header-title">{headerTitle}</h1>
                     <div className="header-right">
                         <ul className="nav-header">
-                            {navList.map((value, index) => 
-                                <li key={index} className="nav-item">
+                            {navList.map((value) => 
+                                <li key={value} className="nav-item">
                                     <a href={value.path} className="nav-link">{value.title}</a>
                                 </li>)}
                         </ul>
@@ -53,6 +54,7 @@ class Page extends Component {
                 </header>
                 <section className ="task4">
                     <Task4Table/>
+                    <Task6/>
                 </section>
                 <section className="overview">
                         <Router>
@@ -68,8 +70,8 @@ class Page extends Component {
                 </section>
                 <footer className='footer'>
                     <ul className="footer-nav">
-                        {footerList.map((value, index) =>
-                            <li key={index} className="footer-nav-item">
+                        {footerList.map((value) =>
+                            <li key={value} className="footer-nav-item">
                                 <a href={value.path} className="footer-link">{value.title}</a>
                             </li>)}
                     </ul>

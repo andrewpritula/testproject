@@ -44,7 +44,10 @@ const JamesGosling = {
 }
 
 //arr of obj
-let goodGuys = [TimBerners, BillGates, JamesGosling];
+let goodGuys = [TimBerners, 
+                BillGates, 
+                JamesGosling, 
+                {fullname : {name : 'Andrew', sername : 'Pritula'}, age : 24, yearOfBirth : 1996, placeOfBirth : 'Krop', displayFullname}];
 
 function consoleInfo(op = 'default', item, itemCopy) {
     console.clear();
@@ -247,7 +250,7 @@ export default class Task4Table extends Component {
                         yearOfBirth:1996, placeOfBirth: "Krop", age:24, displayFullname})}>Push</button>
                     <button className="tButton" onClick={(e) => popArrItem(goodGuys)}>Pop</button>
                     <button className="tButton" onClick={(e) => unshiftArrItem(goodGuys, 
-                        {fullname : { name : 'Andrew', sername : 'Pritula'}, age : 99, displayFullname})}>Unshift</button>
+                        {fullname : { name : 'Default', sername : 'Default'}, age : 99, displayFullname})}>Unshift</button>
                     <button className="tButton" onClick={(e) => shiftArrItem(goodGuys)}>Shift</button>
                     <button className="tButton" onClick={(e) => insertArrItem(goodGuys, 2, {fullname: {name: 'James', sername: 'Bond'}, 
                         yearOfBirth:1996, placeOfBirth: "Krop", age:24, displayFullname})}>Insert by index</button>
