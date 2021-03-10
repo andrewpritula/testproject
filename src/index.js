@@ -46,7 +46,7 @@ class Page extends Component {
                     <div className="header-right">
                         <ul className="nav-header">
                             {navList.map((value) => 
-                                <li key={value} className="nav-item">
+                                <li key={value.title} className="nav-item">
                                     <a href={value.path} className="nav-link">{value.title}</a>
                                 </li>)}
                         </ul>
@@ -71,7 +71,7 @@ class Page extends Component {
                 <footer className='footer'>
                     <ul className="footer-nav">
                         {footerList.map((value) =>
-                            <li key={value} className="footer-nav-item">
+                            <li key={value.title} className="footer-nav-item">
                                 <a href={value.path} className="footer-link">{value.title}</a>
                             </li>)}
                     </ul>

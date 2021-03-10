@@ -21,35 +21,36 @@ class Task6 extends Component {
       console.log(error);
     }
   }
+  
   render() {
     const articles = this.state.data;
     return (
-        <div className = "container tables">
-          <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Event</th>
-                            <th>Published At</th>
-                            <th>Updated At</th>
-                            <th>Sumary</th>
-                            <th>Link</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {articles.map((item) => 
-                            <tr key={item}>
-                                <td key>{item.title}</td>
-                                <td>{item.publishedAt}</td>
-                                <td>{item.updatedAt}</td>
-                                <td>{item.summary}</td>
-                                <td><a className='table-link' href={item.url}>Link</a></td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-        </div>
-      );
-    }
+      <div className = "container tables">
+        <table className="table">
+          <thead>
+              <tr>
+                <th>Event</th>
+                <th>Published At</th>
+                <th>Updated At</th>
+                <th>Sumary</th>
+                <th>Link</th>
+              </tr>
+          </thead>
+          <tbody key ='tbody'>
+            {articles.map((item) => 
+              <tr key={item.title}>
+                <td key>{item.title}</td>
+                <td>{item.publishedAt}</td>
+                <td>{item.updatedAt}</td>
+                <td>{item.summary}</td>
+                <td><a className='table-link' href={item.url}>Link</a></td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 }
 
 export default Task6;

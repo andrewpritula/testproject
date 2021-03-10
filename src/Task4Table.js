@@ -6,6 +6,8 @@ function displayFullname() {
     return this.fullname.name + " " + this.fullname.sername;
 }
 
+const tableTitles = ['Person', 'Year of birth', 'Place of birth', 'Age'];
+
 //create obj
 const TimBerners = {
     //2-nd lvl of nesting
@@ -59,19 +61,19 @@ function consoleInfo(op = 'default', item, itemCopy) {
 }
 
 // display all keys of obj to console
-// function displayObj(item) {
-//       getProp(item);
+function displayObj(item) {
+      getProp(item);
 
-//       function getProp(o) {
-//           for(var prop in o) {
-//               if(typeof(o[prop]) === 'object') {
-//                   getProp(o[prop]);
-//               } else {
-//                   console.log('obj.' + prop + " = " + o[prop])
-//               }
-//           }
-//       }
-// }
+      function getProp(o) {
+          for(var prop in o) {
+              if(typeof(o[prop]) === 'object') {
+                  getProp(o[prop]);
+              } else {
+                  console.log('obj.' + prop + " = " + o[prop])
+              }
+          }
+      }
+}
 
 //add el to obj
 //task 5 creates new obj(copy of obj that you push into property and adding new element, default or custom)
@@ -218,10 +220,9 @@ export default class Task4Table extends Component {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>Person</th>
-                            <th>Year of birth</th>
-                            <th>Place of birth</th>
-                            <th>Age</th>
+                            {tableTitles.map((value, index) =>
+                                <th key = {index}>{value}</th>
+                            )}
                         </tr>
                     </thead>
                     <tbody>
