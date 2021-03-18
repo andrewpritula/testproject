@@ -3,21 +3,26 @@ import {render} from "react-dom"
 
 import imgVCS from '../img/vcs.png'
 
-const vcsTitle = 'VCS';
-const buttonText = 'Show More';
-const introText = <p>Система управления версиями (от англ. Version Control System, VCS или Revision Control System) 
-— программное обеспечение для облегчения работы с изменяющейся информацией. 
-Система управления версиями позволяет хранить несколько версий одного и того же документа, 
-при необходимости возвращаться к более ранним версиям, определять, кто и когда сделал то 
-или иное изменение, и многое другое. Такие системы наиболее широко используются при разработке 
-программного обеспечения для хранения исходных кодов разрабатываемой программы. Однако они могут с успехом 
-применяться и в других областях, в которых ведётся работа с большим количеством непрерывно
-изменяющихся электронных документов. В частности, системы управления версиями применяются 
-в САПР, обычно в составе систем управления данными об изделии (PDM).
-Управление версиями используется в инструментах конфигурационного управления 
-(Software Configuration Management Tools).</p>;
-const subTitle = 'Общая информация';
-const otherInfo = <div>
+const vcsTitle = <h2 className='article-title'>VCS</h2>;
+const articleIntro = 
+    <div>
+        {vcsTitle}
+        <p>Система управления версиями (от англ. Version Control System, VCS или Revision Control System) 
+        — программное обеспечение для облегчения работы с изменяющейся информацией. 
+        Система управления версиями позволяет хранить несколько версий одного и того же документа, 
+        при необходимости возвращаться к более ранним версиям, определять, кто и когда сделал то 
+        или иное изменение, и многое другое. Такие системы наиболее широко используются при разработке 
+        программного обеспечения для хранения исходных кодов разрабатываемой программы. Однако они могут с успехом 
+        применяться и в других областях, в которых ведётся работа с большим количеством непрерывно
+        изменяющихся электронных документов. В частности, системы управления версиями применяются 
+        в САПР, обычно в составе систем управления данными об изделии (PDM).
+        Управление версиями используется в инструментах конфигурационного управления 
+        (Software Configuration Management Tools).</p>
+    </div>
+
+const subTitle = <h3 className='article-subtitle'>Общая информация</h3>
+const articleFull = <div>
+    {subTitle}
     <p>Ситуация, в которой электронный документ за время своего существования претерпевает 
         ряд изменений, достаточно типична. При этом часто бывает важно иметь не только последнюю 
         версию, но и несколько предыдущих. В простейшем случае можно просто хранить несколько 
@@ -79,15 +84,36 @@ const otherInfo = <div>
 </div>
 
 export default class VCS extends Component {
+    constructor(props) {
+        super(props);
+        this.handleMoreClick = this.handleMoreClick.bind(this);
+        this.handleLessClick = this.handleLessClick.bind(this);
+        this.state = {isShowed: false};
+      }
+    
+      handleMoreClick() {
+        this.setState({isShowed: true});
+      }
+    
+      handleLessClick() {
+        this.setState({isShowed: false});
+      }
+
     render() {
+        const isShowed = this.state.isShowed;
+        let button;
+        if (isShowed) {
+            button = <ShowLess onClick={this.handleLessClick} />;
+        } else {
+            button = <ShowMore onClick={this.handleMoreClick} />;
+        }
+
         return(
             <div className="container">
-                <div className="left-part">
-                    <p className="term">{vcsTitle}</p>
-                    {introText}
-                    <button className='article-button'>{buttonText}</button>
-                    <h2>{subTitle}</h2>
-                    {otherInfo}
+                <div className="left-part">  
+                    {articleIntro}
+                    {button}
+                    <ShowInfo isLoggedIn={isShowed} />
                 </div>
                 <div className="rigth-part">
                     <img src={imgVCS} alt="vcs" id="vcs-img" className="overview-img"></img>
@@ -96,5 +122,37 @@ export default class VCS extends Component {
         )
     }
 }
+
+function BeforeClick(props) {
+    return articleFull
+}
+  
+function AfterClick(props) {
+    return null
+}
+  
+function ShowInfo(props) {
+    const isLoggedIn = props.isLoggedIn;
+    if (isLoggedIn) {
+      return <BeforeClick />;
+    }
+    return <AfterClick />;
+}
+  
+function ShowMore(props) {
+    return (
+      <button className='article-button' onClick={props.onClick}>
+        Show more
+      </button>
+    );
+}
+  
+function ShowLess(props) {
+    return (
+      <button className='article-button' onClick={props.onClick}>
+        Show less
+      </button>
+    );
+} 
 
 render(<VCS/>, document.getElementById('overview'));

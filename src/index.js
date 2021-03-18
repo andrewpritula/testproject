@@ -43,14 +43,12 @@ class Page extends Component {
             <div id='page'>
                 <header className="header">
                     <h1 className="header-title">{headerTitle}</h1>
-                    <div className="header-right">
                         <ul className="nav-header">
                             {navList.map((value) => 
                                 <li key={value.title} className="nav-item">
                                     <a href={value.path} className="nav-link">{value.title}</a>
                                 </li>)}
                         </ul>
-                    </div>
                 </header>
                 <section className ="task4">
                     <Task4Table/>

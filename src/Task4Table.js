@@ -60,21 +60,6 @@ function consoleInfo(op = 'default', item, itemCopy) {
     console.table(itemCopy);
 }
 
-// display all keys of obj to console
-function displayObj(item) {
-      getProp(item);
-
-      function getProp(o) {
-          for(var prop in o) {
-              if(typeof(o[prop]) === 'object') {
-                  getProp(o[prop]);
-              } else {
-                  console.log('obj.' + prop + " = " + o[prop])
-              }
-          }
-      }
-}
-
 //add el to obj
 //task 5 creates new obj(copy of obj that you push into property and adding new element, default or custom)
 //and displays first obj and new obj with adding ellement
