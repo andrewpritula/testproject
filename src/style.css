@@ -62,20 +62,15 @@ body {
 .table {
   width: 100%;
   border: 1px solid black;
+  border-collapse: collapse;
 }
 
-td {
+tr, th, td {
+  height: 50px;
   border: 1px solid black;
-  height: 70px;
   text-align: left;
   padding-left: 10px;
   font-size: 18px;
-}
-
-th {
-  font-size: 24px;
-  border: 1px solid black;
-  text-align: center;
 }
 
 .tabble-buttons {
@@ -100,6 +95,8 @@ th {
   color:#fff;
   overflow: auto;
   padding: 100px 100px 0;
+  text-align: justify;
+  font-size: 18px;
 }
 
 .left-part {
@@ -212,4 +209,50 @@ dt {
 
 .table-link:hover{
   text-decoration: underline;
+}
+
+.img-test {
+  margin: 25px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.more-info{
+  padding-top: 0px;
+}
+
+.task-7-list {
+  list-style: none;
+  margin:25px 0 0 0;
+  padding:0;
+}
+
+.list-item {
+  background-color: #ff837b;
+  display: block;
+  padding: 15px;
+  border: 1px solid black;
+  border-bottom: 0;
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.list-item:last-child {
+  border-bottom: 1px solid black;
+}
+
+.placeholder {
+  background: #ff6256;
+  color: black;
+  text-align: center;
+}
+
+.placeholder:before {
+  content: "Drop here";
+}
+
+.task7-header {
+  text-align: center;
 }

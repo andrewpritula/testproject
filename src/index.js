@@ -10,8 +10,8 @@ import NodeJS from '../src/pages/NodeJS'
 import Npm from '../src/pages/Npm'
 import Html from '../src/pages/Html'
 import Css from '../src/pages/Css'
-import Task4Table from './Task4Table'
 import Task6 from './Task6'
+import Task7 from './Task7'
 
 class ListItem {
  constructor(title, path) {
@@ -50,10 +50,11 @@ class Page extends Component {
                                 </li>)}
                         </ul>
                 </header>
-                <section className ="task4">
-                    <Task4Table/>
+                <section className ="container">
+                    <Task7/>
                     <Task6/>
                 </section>
+        
                 <section className="overview">
                         <Router>
                             <Switch>

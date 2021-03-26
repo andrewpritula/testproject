@@ -25,7 +25,7 @@ class Task6 extends Component {
   render() {
     const articles = this.state.data;
     return (
-      <div className = "container tables">
+      <div className = "tables">
         <table className="table">
           <thead>
               <tr>

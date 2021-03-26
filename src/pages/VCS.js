@@ -21,7 +21,7 @@ const articleIntro =
     </div>
 
 const subTitle = <h3 className='article-subtitle'>Общая информация</h3>
-const articleFull = <div>
+const articleFull = <div className="containter">
     {subTitle}
     <p>Ситуация, в которой электронный документ за время своего существования претерпевает 
         ряд изменений, достаточно типична. При этом часто бывает важно иметь не только последнюю 
@@ -109,14 +109,18 @@ export default class VCS extends Component {
         }
 
         return(
-            <div className="container">
-                <div className="left-part">  
-                    {articleIntro}
-                    {button}
-                    <ShowInfo isLoggedIn={isShowed} />
+            <div>
+                <div className="container">
+                    <div className="left-part">  
+                        {articleIntro}
+                        {button}
+                    </div>
+                    <div className="rigth-part">
+                        <img src={imgVCS} alt="vcs" id="vcs-img" className="overview-img"></img>
+                    </div>
                 </div>
-                <div className="rigth-part">
-                    <img src={imgVCS} alt="vcs" id="vcs-img" className="overview-img"></img>
+                <div className="container more-info">
+                    <ShowInfo isLoggedIn={isShowed} />
                 </div>
             </div>
         )
