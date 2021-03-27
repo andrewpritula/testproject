@@ -233,14 +233,9 @@ dt {
   display: block;
   padding: 15px;
   border: 1px solid black;
-  border-bottom: 0;
   font-size: 24px;
   font-weight: 900;
   text-align: center;
-}
-
-.list-item:last-child {
-  border-bottom: 1px solid black;
 }
 
 .placeholder {
