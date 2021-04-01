@@ -4,52 +4,24 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 import './style.css'
 
+import Header from './components/header'
+import Footer from './components/footer'
+import Task6 from './components/Task6'
+import Task7 from './components/Task7'
+
 import VCS from '../src/pages/VCS'
 import Git from '../src/pages/Git'
 import NodeJS from '../src/pages/NodeJS'
 import Npm from '../src/pages/Npm'
 import Html from '../src/pages/Html'
 import Css from '../src/pages/Css'
-import Task6 from './Task6'
-import Task7 from './Task7'
-
-class ListItem {
- constructor(title, path) {
-     this.title = title;
-     this.path = path;
- }
-}
-
-const headerTitle = 'Testproject';
-
-const navList = [
-    new ListItem('VCS', '/'),
-    new ListItem('Git', '/git'),
-    new ListItem('Node JS', '/node'),
-    new ListItem('Npm', '/npm'),
-    new ListItem('Html', '/html'),
-    new ListItem('CSS', '/css')
-];
-
-const footerList = [
-    new ListItem('Andrew Pritula', '/'),
-    new ListItem('GitHub Profile', 'https://github.com/andrewpritula'),
-    new ListItem('Original Design', 'https://dribbble.com/shots/14867346-Harman')
-];
 
 class Page extends Component {
     render() {
         return (
             <div id='page'>
-                <header className="header">
-                    <h1 className="header-title">{headerTitle}</h1>
-                        <ul className="nav-header">
-                            {navList.map((value) => 
-                                <li key={value.title} className="nav-item">
-                                    <a href={value.path} className="nav-link">{value.title}</a>
-                                </li>)}
-                        </ul>
-                </header>
+                <Header/>
+                
                 <section className ="container">
                     <Task7/>
                     <Task6/>
@@ -67,14 +39,8 @@ class Page extends Component {
                             </Switch>
                         </Router>
                 </section>
-                <footer className='footer'>
-                    <ul className="footer-nav">
-                        {footerList.map((value) =>
-                            <li key={value.title} className="footer-nav-item">
-                                <a href={value.path} className="footer-link">{value.title}</a>
-                            </li>)}
-                    </ul>
-                </footer>
+
+                <Footer/>
             </div>
         )
     }

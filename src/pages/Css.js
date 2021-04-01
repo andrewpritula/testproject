@@ -87,28 +87,28 @@ export default class Css extends Component {
       handleLessClick() {
         this.setState({isShowed: false});
       }
+    
+        render() {
+            const isShowed = this.state.isShowed;
+            let button;
+            if (isShowed) {
+                button = <ShowLess onClick={this.handleLessClick} />;
+            } else {
+                button = <ShowMore onClick={this.handleMoreClick} />;
+            }
 
-    render() {
-        const isShowed = this.state.isShowed;
-        let button;
-        if (isShowed) {
-            button = <ShowLess onClick={this.handleLessClick} />;
-        } else {
-            button = <ShowMore onClick={this.handleMoreClick} />;
-        }
-
-        return(
-            <div className="container">
-                <div className="left-part">  
-                    {articleIntro}
-                    {button}
-                    <ShowInfo isLoggedIn={isShowed} />
+            return(
+                <div className="container">
+                    <div className="left-part">  
+                        {articleIntro}
+                        {button}
+                        <ShowInfo isLoggedIn={isShowed} />
+                    </div>
+                    <div className="rigth-part">
+                        <img src={imgCss} alt="css" id="css-img" className="overview-img"></img>
+                    </div>
                 </div>
-                <div className="rigth-part">
-                    <img src={imgCss} alt="css" id="css-img" className="overview-img"></img>
-                </div>
-            </div>
-        )
+            )
     }
 }
 

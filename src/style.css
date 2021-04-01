@@ -23,13 +23,13 @@ body {
 }
 
 .header-title {
-  margin: 0;
   padding-left: 100px;
   float: left;
   color: #fff;
 }
 
 .nav-header {
+  padding-top: 20px;
   padding-right: 100px;
   float: right;
   list-style-type: none;
@@ -75,6 +75,8 @@ tr, th, td {
 
 .tabble-buttons {
   margin-top: 15px;
+  align-items: center;
+  text-align: center;
 }
 
 .tButton {
@@ -112,7 +114,7 @@ tr, th, td {
 
 .article-button {
   border: none;
-  padding: 15px 35px;
+  padding: 10px;
   border-radius: 25px;
   margin: 25px 0;
   font-size: 16px;
@@ -250,4 +252,33 @@ dt {
 
 .task7-header {
   text-align: center;
+}
+
+.messages {
+  padding: 0;
+  list-style: none;
+  height: 200px;
+  overflow-y: scroll;
+}
+
+/* width */
+.messages::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+.messages::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px red; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.messages::-webkit-scrollbar-thumb {
+  background: #ff584d; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.messages::-webkit-scrollbar-thumb:hover {
+  background: #ff584d; 
 }
