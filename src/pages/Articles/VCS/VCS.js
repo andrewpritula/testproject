@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {render} from "react-dom"
 
-import imgVCS from '../img/vcs.png'
+import '../articles.css'
+import imgVCS from './vcs.png'
 
 const vcsTitle = <h2 className='article-title'>VCS</h2>;
 const articleIntro = 

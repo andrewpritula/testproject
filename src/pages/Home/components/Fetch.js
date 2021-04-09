@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import {render} from 'react-dom'
 
-import Item from './items'
+import './fetch.css'
+import Item from './Item'
 
-class Task6 extends Component {
+class Fetch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: null
+      data: null,
+      errorMessage : null,
     };
   }
 
@@ -15,6 +16,7 @@ class Task6 extends Component {
     try {  
       const response = await fetch(`https://spaceflightnewsapi.net/api/v2/articles`);
       if (!response.ok) {
+        this.setState({errorMessage : response.statusText});
         throw Error(response.statusText);
       }
       const json = await response.json();
@@ -33,12 +35,12 @@ class Task6 extends Component {
   render() {
     if (this.state.data === null) {
       // Render loading state ...
-      return (<h2>Loading...</h2>)
+      return (<h2>{this.state.errorMessage}</h2>)
     } else {
       // Render real UI ...
       const articles = this.state.data;
       return (
-        <div className = "tables">
+        <div className = "fetch-table onclick-event">
           <table className="table">
             <thead>
                 <tr>
@@ -51,10 +53,7 @@ class Task6 extends Component {
             </thead>
             <tbody key ='tbody'>
               {articles.map((item, index) => 
-              <Item
-              key={index}
-              item={item}
-              />
+              <Item key={index} item={item}/>
               )}
             </tbody>
           </table>
@@ -64,6 +63,4 @@ class Task6 extends Component {
   }
 }
 
-export default Task6;
-  
-render(<Task6 />, document.getElementById("task6"));
+export default Fetch;

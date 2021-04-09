@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-import imgGit from '../img/git.png'
+import '../articles.css'
+import imgGit from './git.png'
 
 const gitTitle = <h2 className='article-title'>Git</h2>;
 const articleIntro = 

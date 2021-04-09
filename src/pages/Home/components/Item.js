@@ -17,14 +17,15 @@ export default class Item extends Component {
     };
   
     render() {
+      const items = this.props.item;
       return (
         <tr 
         style={{ backgroundColor: this.state.color, cursor: 'pointer' }}
         onClick={() => this.changeColor()}>
-          <td>{this.props.item.title}</td>
-          <td>{this.props.item.publishedAt}</td>
-          <td>{this.props.item.updatedAt}</td>
-          <td>{this.props.item.summary}</td>
+          <td>{items.title}</td>
+          <td>{items.publishedAt}</td>
+          <td>{items.updatedAt}</td>
+          <td>{items.summary}</td>
           <td><a className='table-link' href={this.props.item.url}>Link</a></td>
         </tr>
       );

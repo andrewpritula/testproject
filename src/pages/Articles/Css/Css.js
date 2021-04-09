@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-import imgCss from '../img/css.png'
+import '../articles.css'
+import imgCss from './css.png'
 
 const cssTitle = <h2 className='article-title'>CSS</h2>;
 const articleIntro = 

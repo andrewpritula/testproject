@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-import Clock from './clock'
+import './Css/header.css'
+import Clock from '../../components/Clock/Clock'
 
 export default class Header extends Component {
     constructor(props) {

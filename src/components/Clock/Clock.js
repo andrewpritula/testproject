@@ -1,4 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
+
+import './Css/clock.css'
 
 export default class Clock extends Component {
     constructor(props) {
@@ -25,7 +27,7 @@ export default class Clock extends Component {
   
     render() {
       return (
-       <Fragment>{this.state.date.toLocaleTimeString()}</Fragment>
+       <div className='clock'>{this.state.date.toLocaleTimeString()}</div>
       );
     }
 }

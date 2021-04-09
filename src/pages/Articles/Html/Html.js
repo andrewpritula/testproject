@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-import imgHtml from '../img/html.png'
+import '../articles.css'
+import imgHtml from './html.png'
 
 const htmlTitle = <h2 className='article-title'>HTML</h2>;
 const articleIntro = 

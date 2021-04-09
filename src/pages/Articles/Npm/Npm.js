@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-import imgNpm from '../img/npm.png'
+import '../articles.css'
+import imgNpm from './npm.png'
 
 const npmTitle = <h2 className="article-title">NPM</h2>
 const articleIntro = 

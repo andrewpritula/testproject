@@ -4,27 +4,25 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 import './style.css'
 
-import Header from './components/header'
-import Footer from './components/footer'
-import Task6 from './components/Task6'
-import Task7 from './components/Task7'
+import Header from './layout/header/Header'
+import Footer from './layout/footer/Footer'
 
-import VCS from '../src/pages/VCS'
-import Git from '../src/pages/Git'
-import NodeJS from '../src/pages/NodeJS'
-import Npm from '../src/pages/Npm'
-import Html from '../src/pages/Html'
-import Css from '../src/pages/Css'
+import VCS from './pages/Articles/VCS/VCS'
+import Git from './pages/Articles/Git/Git'
+import NodeJS from './pages/Articles/Node/NodeJS'
+import Npm from './pages/Articles/Npm/Npm'
+import Html from './pages/Articles/Html/Html'
+import Css from './pages/Articles/Css/Css'
+import Tasks from './pages/Home/Tasks'
 
-class Page extends Component {
+class Index extends Component {
     render() {
         return (
             <div id='page'>
                 <Header/>
                 
                 <section className ="container">
-                    <Task7/>
-                    <Task6/>
+                    <Tasks/>
                 </section>
         
                 <section className="overview">
@@ -46,4 +44,4 @@ class Page extends Component {
     }
 }
 
-render(<Page/>, document.getElementById('root'));
+render(<Index/>, document.getElementById('root'));

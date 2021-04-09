@@ -1,0 +1,17 @@
+.dnd-list {
+    margin-top: 100px;
+}
+
+.button {
+    border: none;
+    padding: 10px;
+    border-radius: 25px;
+    margin: 0 25px 0 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.button:hover {
+    color: #ff837b;
+    cursor: pointer;
+}

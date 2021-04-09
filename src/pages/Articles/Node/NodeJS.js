@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-import imgNode from '../img/node.png'
+import '../articles.css'
+import imgNode from './node.png'
 
 const nodeTitle = <h2 className='article-title'>Node JS</h2>
 const articleIntro = 

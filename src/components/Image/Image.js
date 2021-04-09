@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import './Css/image.css'
+
 export default class ImageWithStatusText extends Component {
     constructor(props) {
       super(props);
@@ -18,7 +20,7 @@ export default class ImageWithStatusText extends Component {
   
     render() {
         return (
-            <div>
+            <div className='img-onload-onerror'>
             <img className='img-test' alt = 'pokemon' draggable='false'
                 src= {this.state.src}
                 onLoad={this.handleImageLoaded.bind(this)}
