@@ -2,6 +2,20 @@ import React, { Component } from 'react'
 
 import './scrollList.css'
 
+const translations = {
+  "ru": {
+    'person' : 'Персона: ',
+    'age' : ' Возраст: ',
+    'bp' : ' Место рождения: ',
+    'bd' : ' Дата рождения: ',
+  },
+  "en": {
+    'person' : 'Person: ',
+    'age' : ' Age: ',
+    'bp' : ' Birthplace: ',
+    'bd' : ' Birthdate: ',
+  }
+}
 export default class ScrollList extends Component {
     constructor(props) {
       super(props);
@@ -48,6 +62,7 @@ export default class ScrollList extends Component {
     }
 
     render() {
+      const { lang } = this.props;
       const {items} = this.props;
       return (
           <ul ref={this.listRef} className="item-list">
@@ -58,8 +73,8 @@ export default class ScrollList extends Component {
                 onDragEnd={this.dragEnd.bind(this)}
                 onDragStart={this.dragStart.bind(this)}
                 onDragOver={this.dragOver.bind(this)}>
-                    {'Person: ' + item.fullname.name + ' ' + item.fullname.sername + 
-                    ' Age: ' + item.age + ' BP: ' + item.placeOfBirth + ' BD: ' + item.yearOfBirth}</li>
+                    {translations[lang]["person"] + item.fullname.name + ' ' + item.fullname.sername + 
+                    translations[lang]["age"] + item.age + translations[lang]["bp"] + item.placeOfBirth + translations[lang]["bd"] + item.yearOfBirth}</li>
                 ))}
           </ul>
       );

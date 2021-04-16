@@ -1,66 +1,65 @@
 .left-part {
-    width: 50%;
-    float: left;
-  }
+  width: 50%;
+  float: left;
+}
   
-  .rigth-part {
-    padding-top: 100px;
-    width: 50%;
-    float: right;
-  }
+.rigth-part {
+  padding-top: 100px;
+  width: 50%;
+  float: right;
+}
   
-  .article-button {
-    border: none;
-    padding: 10px;
-    border-radius: 25px;
-    margin: 25px 0;
-    font-size: 16px;
-    font-weight: 600;
-  }
+.article-button {
+  border: none;
+  padding: 10px;
+  border-radius: 25px;
+  margin: 25px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
   
-  .article-button:hover {
-    color: #ff837b;
-    cursor: pointer;
-  }
+.article-button:hover {
+  color: #ff837b;
+  cursor: pointer;
+}
   
-  .article-button:focus{
-    outline: none;
-  }
-  
-  .overview-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
-  
-  #git-img {
-    height: 200px;
-    width: 400px;
-  }
-  
-  #css-img {
-    height: 400px;
-    width: 300px;
-  }
-  
-  #html-img {
-    height: 400px;
-    width: 400px;
-  }
-  
-  #node-img {
-    height: 300px;
-    width: 350px;
-  }
-  
-  #npm-img {
-    height: 150px;
-    width: 300px;
-  }
-  
-  #vcs-img {
-    height: 350px;
-    width: 500px;
-  }
-  
+.article-button:focus{
+  outline: none;
+}
+
+.overview-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#git-img {
+  height: 200px;
+  width: 400px;
+}
+
+#css-img {
+  height: 400px;
+  width: 300px;
+}
+
+#html-img {
+  height: 400px;
+  width: 400px;
+}
+
+#node-img {
+  height: 300px;
+  width: 350px;
+}
+
+#npm-img {
+  height: 150px;
+  width: 300px;
+}
+
+#vcs-img {
+  height: 350px;
+  width: 500px;
+}

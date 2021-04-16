@@ -23,3 +23,11 @@ body {
   text-align: justify;
   font-size: 18px;
 } 
+
+.language-button {
+  float: right;
+  background-color :black;
+  color: white;
+  border-radius: 5px;
+  margin: 15px ;
+}

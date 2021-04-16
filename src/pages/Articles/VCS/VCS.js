@@ -1,163 +1,75 @@
-import React, { Component } from 'react'
-import {render} from "react-dom"
+import React, { Component, Fragment } from 'react'
 
 import '../articles.css'
 import imgVCS from './vcs.png'
 
-const vcsTitle = <h2 className='article-title'>VCS</h2>;
-const articleIntro = 
-    <div>
-        {vcsTitle}
-        <p>Система управления версиями (от англ. Version Control System, VCS или Revision Control System) 
-        — программное обеспечение для облегчения работы с изменяющейся информацией. 
-        Система управления версиями позволяет хранить несколько версий одного и того же документа, 
-        при необходимости возвращаться к более ранним версиям, определять, кто и когда сделал то 
-        или иное изменение, и многое другое. Такие системы наиболее широко используются при разработке 
-        программного обеспечения для хранения исходных кодов разрабатываемой программы. Однако они могут с успехом 
-        применяться и в других областях, в которых ведётся работа с большим количеством непрерывно
-        изменяющихся электронных документов. В частности, системы управления версиями применяются 
-        в САПР, обычно в составе систем управления данными об изделии (PDM).
-        Управление версиями используется в инструментах конфигурационного управления 
-        (Software Configuration Management Tools).</p>
-    </div>
 
-const subTitle = <h3 className='article-subtitle'>Общая информация</h3>
-const articleFull = <div className="containter">
-    {subTitle}
-    <p>Ситуация, в которой электронный документ за время своего существования претерпевает 
-        ряд изменений, достаточно типична. При этом часто бывает важно иметь не только последнюю 
-        версию, но и несколько предыдущих. В простейшем случае можно просто хранить несколько 
-        вариантов документа, нумеруя их соответствующим образом. Такой способ неэффективен 
-        (приходится хранить несколько практически идентичных копий), требует повышенного внимания 
-        и дисциплины и часто ведёт к ошибкам, поэтому были разработаны средства для автоматизации 
-        этой работы.</p>
-    <p>Традиционные системы управления версиями используют централизованную модель, 
-        когда имеется единое хранилище документов, управляемое специальным сервером, 
-        который и выполняет бо́льшую часть функций по управлению версиями. Пользователь, 
-        работающий с документами, должен сначала получить нужную ему версию документа из 
-        хранилища; обычно создаётся локальная копия документа, так называемая «рабочая копия». 
-        Может быть получена последняя версия или любая из предыдущих, которая может быть выбрана 
-        по номеру версии или дате создания, иногда и по другим признакам. После того, как в 
-        документ внесены нужные изменения, новая версия помещается в хранилище. В отличие от 
-        простого сохранения файла, предыдущая версия не стирается, а тоже остаётся в хранилище 
-        и может быть оттуда получена в любое время. Сервер может использовать т. н. 
-        дельта-компрессию — такой способ хранения документов, при котором сохраняются только 
-        изменения между последовательными версиями, что позволяет уменьшить объём хранимых данных. 
-        Поскольку обычно наиболее востребованной является последняя версия файла, система может 
-        при сохранении новой версии сохранять её целиком, заменяя в хранилище последнюю ранее 
-        сохранённую версию на разницу между этой и последней версией. Некоторые системы 
-        (например, ClearCase) поддерживают сохранение версий обоих видов: большинство версий 
-        сохраняется в виде дельт, но периодически (по специальной команде администратора) 
-        выполняется сохранение версий всех файлов в полном виде; такой подход обеспечивает 
-        максимально полное восстановление истории в случае повреждения репозитория.</p>
-        <p>Иногда создание новой версии выполняется незаметно для пользователя (прозрачно), 
-        либо прикладной программой, имеющей встроенную поддержку такой функции, либо за счёт
-        использования специальной файловой системы. В этом случае пользователь просто работает 
-        с файлом, как обычно, и при сохранении файла автоматически создаётся новая версия.</p>
-        <p>Часто бывает, что над одним проектом одновременно работают несколько человек. 
-        Если два человека изменяют один и тот же файл, то один из них может случайно 
-        отменить изменения, сделанные другим. Системы управления версиями отслеживают 
-        такие конфликты и предлагают средства их решения. Большинство систем может автоматически 
-        объединить (слить) изменения, сделанные разными разработчиками. Однако такое 
-        автоматическое объединение изменений, обычно, возможно только для текстовых файлов и
-        при условии, что изменялись разные (непересекающиеся) части этого файла. 
-        Такое ограничение связано с тем, что большинство систем управления версиями ориентированы
-        на поддержку процесса разработки программного обеспечения, а исходные коды программ 
-        хранятся в текстовых файлах. Если автоматическое объединение выполнить не удалось, 
-        система может предложить решить проблему вручную.</p>
-        <p>Часто выполнить слияние невозможно ни в автоматическом, ни в ручном режиме, например, 
-        если формат файла неизвестен или слишком сложен. Некоторые системы управления версиями 
-        дают возможность заблокировать файл в хранилище. Блокировка не позволяет другим 
-        пользователям получить рабочую копию или препятствует изменению рабочей копии файла 
-        (например, средствами файловой системы) и обеспечивает, таким образом, исключительный 
-        доступ только тому пользователю, который работает с документом.</p>
-    <p>Многие системы управления версиями предоставляют ряд других возможностей:</p>
-    <ul>
-        <li>Позволяют создавать разные варианты одного документа, т. н. ветки, с общей 
-            историей изменений до точки ветвления и с разными — после неё.</li>
-        <li>Дают возможность узнать, кто и когда добавил или изменил конкретный набор строк в 
-            файле</li>  
-        <li>Ведут журнал изменений, в который пользователи могут записывать пояснения о том, 
-            что и почему они изменили в данной версии.</li>
-        <li>Контролируют права доступа пользователей, разрешая или запрещая чтение или изменение 
-            данных, в зависимости от того, кто запрашивает это действие.</li>
-    </ul>
-</div>
+const translations = {
+    "ru": {
+        "title": "Система управления версиями",
+        "introInf": 
+        <Fragment>
+            <p>Система управления версиями (от англ. Version Control System, VCS или Revision Control System) 
+            — программное обеспечение для облегчения работы с изменяющейся информацией. 
+            Система управления версиями позволяет хранить несколько версий одного и того же документа, 
+            при необходимости возвращаться к более ранним версиям, определять, кто и когда сделал то 
+            или иное изменение, и многое другое. Такие системы наиболее широко используются при разработке 
+            программного обеспечения для хранения исходных кодов разрабатываемой программы. Однако они могут с успехом 
+            применяться и в других областях, в которых ведётся работа с большим количеством непрерывно
+            изменяющихся электронных документов. В частности, системы управления версиями применяются 
+            в САПР, обычно в составе систем управления данными об изделии (PDM).
+            Управление версиями используется в инструментах конфигурационного управления 
+            (Software Configuration Management Tools).</p>
+        </Fragment>,    
+    },
+    "en": {
+      "title": "Version control system",
+      "introInf": <Fragment>
+        <p>
+        In software engineering, version control (also known as revision control, 
+        source control, or source code management) is a class of systems responsible 
+        for managing changes to computer programs, documents, large web sites, or other 
+        collections of information. Version control is a component of software configuration management.
+        Changes are usually identified by a number or letter code, termed the "revision number", 
+        "revision level", or simply "revision". For example, an initial set of files is "revision 1". 
+        When the first change is made, the resulting set is "revision 2", and so on. 
+        Each revision is associated with a timestamp and the person making the change. 
+        Revisions can be compared, restored, and with some types of files, merged.
+        The need for a logical way to organize and control revisions has existed for 
+        almost as long as writing has existed, but revision control became much more important, 
+        and complicated, when the era of computing began. The numbering of book editions and of 
+        specification revisions are examples that date back to the print-only era. Today, the most capable 
+        (as well as complex) revision control systems are those used in software development, where a 
+        team of people may concurrently make changes to the same files.
+        Version control systems (VCS) are most commonly run as stand-alone applications, 
+        but revision control is also embedded in various types of software such 
+        as word processors and spreadsheets, collaborative web docs[2] and in various 
+        content management systems, e.g., Wikipedia's page history. Revision control allows 
+        for the ability to revert a document to a previous revision, which is critical for 
+        allowing editors to track each other's edits, correct mistakes, and defend against 
+        vandalism and spamming in wikis.
+        </p>
+      </Fragment>,
+    }
+}
 
-export default class VCS extends Component {
-    constructor(props) {
-        super(props);
-        this.handleMoreClick = this.handleMoreClick.bind(this);
-        this.handleLessClick = this.handleLessClick.bind(this);
-        this.state = {isShowed: false};
-      }
-    
-      handleMoreClick() {
-        this.setState({isShowed: true});
-      }
-    
-      handleLessClick() {
-        this.setState({isShowed: false});
-      }
-
+class VCS extends Component {
     render() {
-        const isShowed = this.state.isShowed;
-        let button;
-        if (isShowed) {
-            button = <ShowLess onClick={this.handleLessClick} />;
-        } else {
-            button = <ShowMore onClick={this.handleMoreClick} />;
-        }
-
+        const { lang } = this.props;
         return(
             <div>
                 <div className="container">
-                    <div className="left-part">  
-                        {articleIntro}
-                        {button}
+                    <div className="left-part">
+                        <h3>{translations[lang]["title"]}</h3>
+                        <div>{translations[lang]["introInf"]}</div>
                     </div>
                     <div className="rigth-part">
                         <img src={imgVCS} alt="vcs" id="vcs-img" className="overview-img"></img>
                     </div>
-                </div>
-                <div className="container more-info">
-                    <ShowInfo isLoggedIn={isShowed} />
                 </div>
             </div>
         )
     }
 }
 
-function BeforeClick(props) {
-    return articleFull
-}
-  
-function AfterClick(props) {
-    return null
-}
-  
-function ShowInfo(props) {
-    const isLoggedIn = props.isLoggedIn;
-    if (isLoggedIn) {
-      return <BeforeClick />;
-    }
-    return <AfterClick />;
-}
-  
-function ShowMore(props) {
-    return (
-      <button className='article-button' onClick={props.onClick}>
-        Show more
-      </button>
-    );
-}
-  
-function ShowLess(props) {
-    return (
-      <button className='article-button' onClick={props.onClick}>
-        Show less
-      </button>
-    );
-} 
-
-render(<VCS/>, document.getElementById('overview'));
+export default VCS;

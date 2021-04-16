@@ -9,12 +9,12 @@ export default class ImageWithStatusText extends Component {
     }
   
     handleImageLoaded() {
-        alert("Loaded");
+        console.log('Image Load');
         this.setState({ imageStatus: "loaded" });
     }
   
     handleImageErrored() {
-        alert("Error");
+        console.log("Image Error");
         this.setState({ imageStatus: "failed to load" });
     }
   
@@ -23,8 +23,8 @@ export default class ImageWithStatusText extends Component {
             <div className='img-onload-onerror'>
             <img className='img-test' alt = 'pokemon' draggable='false'
                 src= {this.state.src}
-                onLoad={this.handleImageLoaded.bind(this)}
-                onError={this.handleImageErrored.bind(this)}
+                onLoad={() => this.handleImageLoaded()}
+                onError={() => this.handleImageErrored()}
             />
             </div>
         );

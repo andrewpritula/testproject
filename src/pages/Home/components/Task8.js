@@ -3,6 +3,17 @@ import React, { Component } from 'react'
 import './task8.css'
 import ScrollList from './ScrollList'
 
+const translations = {
+    "ru": {
+      'sort' : 'Сортировать',
+      'reset' : 'Cброс',
+      
+    },
+    "en": {
+      'sort' : 'Sort',
+      'reset' : 'Reset',
+    }
+  }
 export default class Task8 extends Component {
     constructor(props) {
         super(props);
@@ -222,13 +233,15 @@ export default class Task8 extends Component {
     }
 
     render() {
+        
+      const { lang } = this.props;
       return (
         <div className='dnd-list'>
             <button className = 'button' onClick={() => this.handleAddClick(this.state.testPerson)}>+</button>
             <button className = 'button' onClick={() => this.handleDeleteClick(this.state.items)}>-</button>
-            <button className = 'button' onClick={() => this.handleSortClick(this.state.items, 'age')}>Sort</button>
-            <button className = 'button' onClick={this.handleReset}>Reset</button>
-            <ScrollList items={this.state.items} />
+            <button className = 'button' onClick={() => this.handleSortClick(this.state.items, 'age')}>{translations[lang]["sort"]}</button>
+            <button className = 'button' onClick={this.handleReset}>{translations[lang]["reset"]}</button>
+            <ScrollList lang = {lang} items={this.state.items} />
         </div>
       );
     }

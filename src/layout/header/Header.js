@@ -3,11 +3,19 @@ import React, { Component } from 'react'
 import './Css/header.css'
 import Clock from '../../components/Clock/Clock'
 
+const translations = {
+    "ru": {
+        "title": "Тестовый проект",  
+    },
+    "en": {
+        "title": "Test project",
+    }
+}
+
 export default class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            headerTitle : 'Testproject',
 
             navList : [
               { title :'VCS', path : '/'},
@@ -20,11 +28,13 @@ export default class Header extends Component {
         };
     }
     render() {
+        const {navList} = this.state;
+        const { lang } = this.props;
         return (
             <header className="header">
-                <h1 className="header-title">{this.state.headerTitle} <Clock/></h1>
+                <h1 className="header-title">{translations[lang]["title"]} <Clock/></h1>
                     <ul className="nav-header">
-                        {this.state.navList.map((value) => 
+                        {navList.map((value) => 
                             <li key={value.title} className="nav-item">
                                 <a href={value.path} className="nav-link">{value.title}</a>
                             </li>)}

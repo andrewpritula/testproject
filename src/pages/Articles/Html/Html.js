@@ -1,134 +1,86 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 import '../articles.css'
 import imgHtml from './html.png'
 
-const htmlTitle = <h2 className='article-title'>HTML</h2>;
-const articleIntro = 
-    <div>
-        {htmlTitle}
+const translations = {
+    "ru": {
+        "title": "HTML",
+        "introInf": 
+        <Fragment>
+          <p>HTML (от англ. HyperText Markup Language — «язык гипертекстовой разметки») 
+              — стандартизированный язык разметки веб-страниц во Всемирной паутине. 
+              Код HTML интерпретируется браузерами; полученная в результате 
+              интерпретации страница отображается на экране монитора компьютера 
+              или мобильного устройства.
+          </p>
+          <p>Язык HTML до 5-й версии определялся как приложение SGML 
+              (стандартного обобщённого языка разметки по стандарту ISO 8879). 
+              Спецификации HTML5 формулируются в терминах DOM (объектной модели документа).
+          </p>
+          <p>Строгим вариантом HTML является XHTML, он наследует синтаксис XML и 
+              является приложением языка XML в области разметки гипертекста.
+          </p>
+          <p>HTML-страницы, как правило, открываются браузерами обмениваясь с сервером 
+              информацией по протоколу HTTP или HTTPS, в виде простого текста или с 
+              использованием шифрования.
+          </p>
+        </Fragment>,
+    },
+    "en": {
+      "title": "HTML",
+      "introInf": <Fragment>
         <p>
-            HTML (HyperText Markup Language — «язык гипертекстовой разметки») — 
-            самый базовый строительный блок Веба. Он определяет содержание и структуру веб-контента. 
-            Другие технологии, помимо HTML, обычно используются для описания внешнего вида/представления 
-            (CSS) или функциональности/поведения (JavaScript) веб-страницы.
+        The HyperText Markup Language, or HTML is the standard markup language for documents 
+        designed to be displayed in a web browser. It can be assisted by technologies such 
+        as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.
         </p>
         <p>
-            Под гипертекстом ("hypertext") понимаются ссылки, которые соединяют веб-страницы друг с 
-            другом либо в пределах одного веб-сайта, либо между веб-сайтами. Ссылки являются 
-            фундаментальным аспектом Веба. Загружая контент в Интернет и связывая его со страницами, 
-            созданными другими людьми, вы становитесь активным участником Всемирной паутины.
+        Web browsers receive HTML documents from a web server or from local storage 
+        and render the documents into multimedia web pages. HTML describes the structure 
+        of a web page semantically and originally included cues for the appearance of 
+        the document.
         </p>
         <p>
-            Язык HTML до 5-й версии определялся как приложение SGML (стандартного обобщённого языка разметки 
-            по стандарту ISO 8879). Спецификации HTML5 формулируются в терминах DOM (объектной модели документа).
+        HTML elements are the building blocks of HTML pages. With HTML constructs, 
+        images and other objects such as interactive forms may be embedded into the 
+        rendered page. HTML provides a means to create structured documents by denoting 
+        structural semantics for text such as headings, paragraphs, lists, links, quotes 
+        and other items. HTML elements are delineated by tags, written using angle brackets.
+        Tags such as &gt;img /&gt; and &gt;input /&gt; directly introduce content into the page. 
+        Other tags such as &gt;p&gt; surround and provide information about document text and 
+            may include other tags as sub-elements. Browsers do not display the HTML tags, but use them to interpret the content of the page.
         </p>
         <p>
-            Строгим вариантом HTML является XHTML, он наследует синтаксис XML и является приложением языка XML 
-            в области разметки гипертекста.
+        HTML can embed programs written in a scripting language such as JavaScript, 
+        which affects the behavior and content of web pages. Inclusion of CSS defines 
+        the look and layout of content. The World Wide Web Consortium (W3C), 
+        former maintainer of the HTML and current maintainer of the CSS standards, 
+        has encouraged the use of CSS over explicit presentational HTML since 1997.
         </p>
-        <p>
-            HTML-страницы, как правило, открываются браузерами обмениваясь с сервером информацией по протоколу HTTP 
-            или HTTPS, в виде простого текста или с использованием шифрования.
-        </p>
-    </div>
+      </Fragment>,
+    }
+}
 
-const subTitle = <h3 className='article-subtitle'>Общая информация</h3>
-const articleFull = <div>
-    {subTitle}
-    <p>HTML использует разметку ("markup") для отображения текста, изображений и другого 
-        контента в веб-браузере. HTML-разметка включает в себя специальные "элементы", 
-        такие как &lt;head&gt;, &lt;title&gt;, &lt;body&gt;, &lt;header&gt;, &lt;footer&gt;, &lt;article&gt;, &lt;section&gt;, 
-        &lt;p&gt;, &lt;div&gt;, &lt;span&gt;, &lt;img&gt;, &lt;aside&gt;, &lt;audio&gt;, &lt;canvas&gt;, &lt;datalist&gt;, 
-        &lt;details&gt;, &lt;embed&gt;, &lt;nav&gt;, &lt;output&gt;, &lt;progress&gt;, &lt;video&gt; и многие другие.
-    </p>
-    <p>
-        HTML-элемент выделяется из прочего текста в документе с помощью "тегов", 
-        которые состоят из имени элемента окруженного "&lt;" и "&gt;". Имя элемента внутри 
-        тега не чувствительно к регистру. То есть, оно может быть написано в верхнем 
-        или нижнем регистре, или смешано. Например, тег &lt;title&gt; может быть записан 
-        как &lt;Title&gt;, &lt;TITLE&gt;, или любым другим способом.
-        </p>
-        <p>Статьи, представленные ниже, могут помочь вам больше узнать о HTML.</p>
-        <h3>Введение в HTML</h3>
-        <p>Если вы новичок в веб-разработке, обязательно прочитайте статью:
-        <a href="https://developer.mozilla.org/ru/docs/Learn/Getting_started_with_the_web/HTML_basics" className="text-link"> Основы HTML</a>, 
-        чтобы узнать, что такое HTML и как его использовать.
-        </p>
-        <h3>Руководства по HTML</h3>
-        <p>Статьи о том, как использовать HTML, а также обучающие материалы и исчерпывающие примеры можно найти в разделе. 
-            <a href="https://developer.mozilla.org/ru/docs/Learn/HTML" className="text-link"> Пространство изучения HTML</a>, 
-        </p>
-</div>
-
-export default class Html extends Component {
-    constructor(props) {
-        super(props);
-        this.handleMoreClick = this.handleMoreClick.bind(this);
-        this.handleLessClick = this.handleLessClick.bind(this);
-        this.state = {isShowed: false};
-      }
-    
-      handleMoreClick() {
-        this.setState({isShowed: true});
-      }
-    
-      handleLessClick() {
-        this.setState({isShowed: false});
-      }
-
+class Html extends Component {
     render() {
-        const isShowed = this.state.isShowed;
-        let button;
-        if (isShowed) {
-            button = <ShowLess onClick={this.handleLessClick} />;
-        } else {
-            button = <ShowMore onClick={this.handleMoreClick} />;
-        }
+        const { lang } = this.props;
+        console.log(lang)
 
         return(
-            <div className="container">
-                <div className="left-part">  
-                    {articleIntro}
-                    {button}
-                    <ShowInfo isLoggedIn={isShowed} />
-                </div>
-                <div className="rigth-part">
-                    <img src={imgHtml} alt="html" id="html-img" className="overview-img"></img>
+            <div>
+                <div className="container">
+                    <div className="left-part">
+                        <h3>{translations[lang]["title"]}</h3>
+                        <div>{translations[lang]["introInf"]}</div>
+                    </div>
+                    <div className="rigth-part">
+                        <img src={imgHtml} alt="html" id="html-img" className="overview-img"></img>
+                    </div>
                 </div>
             </div>
         )
     }
 }
 
-function BeforeClick(props) {
-    return articleFull
-}
-  
-function AfterClick(props) {
-    return null
-}
-  
-function ShowInfo(props) {
-    const isLoggedIn = props.isLoggedIn;
-    if (isLoggedIn) {
-      return <BeforeClick />;
-    }
-    return <AfterClick />;
-}
-  
-function ShowMore(props) {
-    return (
-      <button className='article-button' onClick={props.onClick}>
-        Show more
-      </button>
-    );
-}
-  
-function ShowLess(props) {
-    return (
-      <button className='article-button' onClick={props.onClick}>
-        Show less
-      </button>
-    );
-} 
+export default Html;
