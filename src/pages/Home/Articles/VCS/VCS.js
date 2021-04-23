@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 
 import {ThemeContext} from '../../components/theme-context';
 import '../articles.css'
-import imgVCS from './vcs.png'
+import imgVCS from '../../../../accets/images/vcs.png'
 
 
 const translations = {

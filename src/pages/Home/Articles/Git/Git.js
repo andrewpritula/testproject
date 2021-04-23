@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import {ThemeContext} from '../../components/theme-context';
 import '../articles.css'
-import imgGit from './git.png'
+import imgGit from '../../../../accets/images/git.png'
 
 const translations = {
     "ru": {

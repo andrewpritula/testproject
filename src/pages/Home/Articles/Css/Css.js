@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import {ThemeContext} from '../../components/theme-context';
 import '../articles.css'
-import imgCss from './css.png'
+import imgCss from '../../../../accets/images/css.png'
 
 const translations = {
     "ru": {

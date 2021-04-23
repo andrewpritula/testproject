@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 
 import '../articles.css'
-import imgNode from './node.png'
+import imgNode from '../../../../accets/images/node.png'
 import {ThemeContext} from '../../components/theme-context';
 
 
