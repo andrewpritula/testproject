@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import {ThemeContext} from '../../pages/Home/components/theme-context';
 import './Css/header.css'
 import Clock from '../../components/Clock/Clock'
 
@@ -12,7 +13,7 @@ const translations = {
     }
 }
 
-export default class Header extends Component {
+class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,16 +31,20 @@ export default class Header extends Component {
     render() {
         const {navList} = this.state;
         const { lang } = this.props;
+        let theme = this.context;
         return (
-            <header className="header">
+            <header className='header' style={{backgroundColor : theme.backgroundColor, color : theme.color}}>
                 <h1 className="header-title">{translations[lang]["title"]} <Clock/></h1>
                     <ul className="nav-header">
                         {navList.map((value) => 
                             <li key={value.title} className="nav-item">
-                                <a href={value.path} className="nav-link">{value.title}</a>
+                                <a href={value.path} className="nav-link" style={{color : theme.color}}>{value.title}</a>
                             </li>)}
                     </ul>
             </header>
         )
     }
 }
+
+Header.contextType = ThemeContext;
+export default Header;

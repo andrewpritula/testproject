@@ -8,30 +8,11 @@
   width: 50%;
   float: right;
 }
-  
-.article-button {
-  border: none;
-  padding: 10px;
-  border-radius: 25px;
-  margin: 25px 0;
-  font-size: 16px;
-  font-weight: 600;
-}
-  
-.article-button:hover {
-  color: #ff837b;
-  cursor: pointer;
-}
-  
-.article-button:focus{
-  outline: none;
-}
 
 .overview-img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
 }
 
 #git-img {
@@ -62,4 +43,7 @@
 #vcs-img {
   height: 350px;
   width: 500px;
+}
+.container {
+  padding: 100px;
 }

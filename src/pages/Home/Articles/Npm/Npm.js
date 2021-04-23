@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 
+import {ThemeContext} from '../../components/theme-context';
 import '../articles.css'
 import imgNPM from './npm.png'
 
@@ -51,12 +52,11 @@ const translations = {
 
 class NPM extends Component {
     render() {
+        let theme = this.context;
         const { lang } = this.props;
-        console.log(lang)
-
         return(
             <div>
-                <div className="container">
+                <div className="container" style={{backgroundColor : theme.backgroundColor, color : theme.color}}>
                     <div className="left-part">
                         <h3>{translations[lang]["title"]}</h3>
                         <div>{translations[lang]["introInf"]}</div>
@@ -70,4 +70,6 @@ class NPM extends Component {
     }
 }
 
+
+NPM.contextType = ThemeContext;
 export default NPM;

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-
+import {ThemeContext} from '../../components/theme-context';
 import '../articles.css'
 import imgCss from './css.png'
 
@@ -91,14 +91,13 @@ const translations = {
     }
 }
 
-class Html extends Component {
+class Css extends Component {
     render() {
         const { lang } = this.props;
-        console.log(lang)
-
+        let theme = this.context;
         return(
             <div>
-                <div className="container">
+                <div className="container" style={{backgroundColor : theme.backgroundColor, color : theme.color}}>
                     <div className="left-part">
                         <h3>{translations[lang]["title"]}</h3>
                         <div>{translations[lang]["introInf"]}</div>
@@ -112,4 +111,5 @@ class Html extends Component {
     }
 }
 
-export default Html;
+Css.contextType = ThemeContext;
+export default Css;

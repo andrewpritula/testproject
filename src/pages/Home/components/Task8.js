@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
-import './task8.css'
+import './Styles/task8.css'
 import ScrollList from './ScrollList'
+import {ThemeContext} from '../../Home/components/theme-context';
 
 const translations = {
     "ru": {
@@ -13,8 +14,9 @@ const translations = {
       'sort' : 'Sort',
       'reset' : 'Reset',
     }
-  }
-export default class Task8 extends Component {
+}
+
+class Task8 extends Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -233,16 +235,19 @@ export default class Task8 extends Component {
     }
 
     render() {
-        
-      const { lang } = this.props;
-      return (
-        <div className='dnd-list'>
-            <button className = 'button' onClick={() => this.handleAddClick(this.state.testPerson)}>+</button>
-            <button className = 'button' onClick={() => this.handleDeleteClick(this.state.items)}>-</button>
-            <button className = 'button' onClick={() => this.handleSortClick(this.state.items, 'age')}>{translations[lang]["sort"]}</button>
-            <button className = 'button' onClick={this.handleReset}>{translations[lang]["reset"]}</button>
-            <ScrollList lang = {lang} items={this.state.items} />
-        </div>
-      );
+        let theme = this.context;
+        const { lang } = this.props;
+        return (
+            <div className='dnd-list card container' style={{backgroundColor : theme.backgroundColor, color : theme.color}}>
+                <button className = 'button' onClick={() => this.handleAddClick(this.state.testPerson)}>+</button>
+                <button className = 'button' onClick={() => this.handleDeleteClick(this.state.items)}>-</button>
+                <button className = 'button' onClick={() => this.handleSortClick(this.state.items, 'age')}>{translations[lang]["sort"]}</button>
+                <button className = 'button' onClick={this.handleReset}>{translations[lang]["reset"]}</button>
+                <ScrollList lang = {lang} items={this.state.items} />
+            </div>
+        );
     }
 }
+
+Task8.contextType = ThemeContext;
+export default Task8;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import './scrollList.css'
+import './Styles/scrollList.css'
 
 const translations = {
   "ru": {

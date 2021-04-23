@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
-import './fetch.css'
-import Item from './Item'
-
+import {ThemeContext} from './theme-context';
+import './Styles/fetch.css'
 
 const translations = {
   "ru": {
@@ -51,6 +50,7 @@ class Fetch extends Component {
 
   render() {
     const { lang } = this.props;
+    let theme = this.context;
     if (this.state.data === null) {
       // Render loading state ...
       return (<h2>{this.state.errorMessage}</h2>)
@@ -58,7 +58,7 @@ class Fetch extends Component {
       // Render real UI ...
       const articles = this.state.data;
       return (
-        <div className = "fetch-table onclick-event">
+        <div className = "fetch-table container" style={{backgroundColor : theme.backgroundColor, color : theme.color}}>
           <table className="table">
             <thead>
                 <tr>
@@ -71,7 +71,13 @@ class Fetch extends Component {
             </thead>
             <tbody key ='tbody'>
               {articles.map((item, index) => 
-              <Item key={index} item={item}/>
+              <tr key={index}>
+                <td>{item.title}</td>
+                <td>{item.publishedAt}</td>
+                <td>{item.updatedAt}</td>
+                <td>{item.summary}</td>
+                <td><a className='table-link' href={item.url} style={{color : theme.color}}>{translations[lang]['Link']}</a></td>
+              </tr>
               )}
             </tbody>
           </table>
@@ -81,4 +87,6 @@ class Fetch extends Component {
   }
 }
 
+
+Fetch.contextType = ThemeContext;
 export default Fetch;

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 
+import {ThemeContext} from '../../components/theme-context';
 import '../articles.css'
 import imgVCS from './vcs.png'
 
@@ -55,10 +56,11 @@ const translations = {
 
 class VCS extends Component {
     render() {
+        let theme = this.context;
         const { lang } = this.props;
         return(
             <div>
-                <div className="container">
+                <div className="container" style={{backgroundColor : theme.backgroundColor, color : theme.color}}>
                     <div className="left-part">
                         <h3>{translations[lang]["title"]}</h3>
                         <div>{translations[lang]["introInf"]}</div>
@@ -72,4 +74,6 @@ class VCS extends Component {
     }
 }
 
+
+VCS.contextType = ThemeContext;
 export default VCS;
