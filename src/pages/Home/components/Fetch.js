@@ -1,92 +1,65 @@
-import React, { Component } from 'react'
-
-import {ThemeContext} from './theme-context';
+import React, { useState, useEffect } from 'react'
 import './Styles/fetch.css'
+import ThemeContext from './ThemeContext'
+import {useTranslation} from "react-i18next";
 
-const translations = {
-  "ru": {
-      'event' : 'Событие',
-      'Published At' : 'Опубликовано',
-      'Updated At' : 'Обновлено',
-      'Summary' : 'Итог',
-      'Link' : 'Cсылка',
-  },
-  "en": {
-    'event' : 'Event',
-    'Published At' : 'Published',
-    'Updated At' : 'Updated',
-    'Summary' : 'Summary',
-    'Link' : 'Link',
-  }
-}
-class Fetch extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      errorMessage : null,
-    };
-  }
+function Fetch() {
+  const {t} = useTranslation('common');
+  const {dark} = React.useContext(ThemeContext);
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+  
+   // Примечание: пустой массив зависимостей [] означает, что
+  // этот useEffect будет запущен один раз
+  // аналогично componentDidMount()
+  useEffect(() => {
+    fetch("https://spaceflightnewsapi.net/api/v2/articles")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
+        // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
+        // чтобы не перехватывать исключения из ошибок в самих компонентах.
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, [])
 
-  async componentDidMount() {
-    try {  
-      const response = await fetch(`https://spaceflightnewsapi.net/api/v2/articles`);
-      if (!response.ok) {
-        this.setState({errorMessage : response.statusText});
-        throw Error(response.statusText);
-      }
-      const json = await response.json();
-      this.setState({ data: json });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.response) {
-      this.response.cancel();
-    }
-  }
-
-  render() {
-    const { lang } = this.props;
-    let theme = this.context;
-    if (this.state.data === null) {
-      // Render loading state ...
-      return (<h2>{this.state.errorMessage}</h2>)
-    } else {
-      // Render real UI ...
-      const articles = this.state.data;
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    return <div>Loading...</div>;
+  } else {
       return (
-        <div className = "fetch-table container" style={{backgroundColor : theme.backgroundColor, color : theme.color}}>
+        <div className={dark ? "container-dark" : "container"}>
           <table className="table">
             <thead>
                 <tr>
-                  <th>{translations[lang]["event"]}</th>
-                  <th>{translations[lang]['Published At']}</th>
-                  <th>{translations[lang]['Updated At'] }</th>
-                  <th>{translations[lang]['Summary']}</th>
-                  <th>{translations[lang]['Link']}</th>
+                  <th>{t('tableTitle')}</th>
+                  <th>{t('tableSummary')}</th>
+                  <th>{t('tableLink')}</th>
                 </tr>
             </thead>
             <tbody key ='tbody'>
-              {articles.map((item, index) => 
+              {items.map((item, index) => 
               <tr key={index}>
                 <td>{item.title}</td>
-                <td>{item.publishedAt}</td>
-                <td>{item.updatedAt}</td>
                 <td>{item.summary}</td>
-                <td><a className='table-link' href={item.url} style={{color : theme.color}}>{translations[lang]['Link']}</a></td>
+                <td>
+                  <a className={dark ? "table-link-dark" : "table-link"} href={item.url}>{t('tableLink')}</a>
+                </td>
               </tr>
               )}
             </tbody>
           </table>
         </div>
       );
-    }
   }
 }
 
-
-Fetch.contextType = ThemeContext;
 export default Fetch;

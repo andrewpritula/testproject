@@ -1,42 +1,27 @@
-import React, { Component } from 'react'
-
+import React, { useState } from 'react'
 import './Css/footer.css'
+import {useTranslation} from "react-i18next";
 
-const translations = {
-    "ru": {
-        "Andrew Pritula": "Андрей Притула",
-        "GitHub": "Git репозиторий",
-        "Design": "Реф дизайна",
-       
-    },
-    "en": {
-        "Andrew Pritula": "Andrew Pritula",
-        "GitHub": "Git repository",
-        "Design": "Design referense",
-    }
+function Footer(props) {
+    const [userUrl] = useState('/');
+    const [gitHubUrl] = useState('https://github.com/andrewpritula');
+    const [designUrl] = useState('https://dribbble.com/shots/14867346-Harman');
+    const {t} = useTranslation('common');
+    return (
+        <footer className='footer'>
+            <ul className="footer-nav">
+                <li className="footer-nav-item">
+                    <a href={userUrl} className="footer-link">{t('name')}</a>
+                </li>
+                <li className="footer-nav-item">
+                    <a href={gitHubUrl} className="footer-link">{t('git')}</a>
+                </li>
+                <li className="footer-nav-item">
+                    <a href={designUrl} className="footer-link">{t('design')}</a>
+                </li>
+            </ul>
+        </footer>
+    )
 }
-export default class Footer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            footerList : [
-                {title : 'Andrew Pritula', path : '/'},
-                {title : 'GitHub', path : 'https://github.com/andrewpritula'},
-                {title : 'Design', path : 'https://dribbble.com/shots/14867346-Harman'},
-            ]
-        };
-    }
-    render() {
-        const {lang} = this.props;
-        return (
-            <footer className='footer'>
-                <ul className="footer-nav">
-                    {this.state.footerList.map((value) =>
-                        <li key={value.title} className="footer-nav-item">
-                            <a href={value.path} className="footer-link">{translations[lang][value.title]}</a>
-                        </li>)}
-                </ul>
-            </footer>
-        )
-    }
-}
+
+export default Footer;

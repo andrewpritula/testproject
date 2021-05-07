@@ -11,3 +11,8 @@
     color: #ff837b;
     cursor: pointer;
 }
+
+.item-list {
+    padding: 0;
+    list-style: none;
+}

@@ -1,50 +1,33 @@
-import React, { Component } from 'react'
-
-import {ThemeContext} from '../../pages/Home/components/theme-context';
+import React, { useState } from 'react'
 import './Css/header.css'
 import Clock from '../../components/Clock/Clock'
+import ThemeContext from '../../pages/Home/components/ThemeContext'
+import {useTranslation} from "react-i18next";
 
-const translations = {
-    "ru": {
-        "title": "Тестовый проект",  
-    },
-    "en": {
-        "title": "Test project",
-    }
+const hList = [
+    { title :'VCS', path : '/'},
+    { title :'Git', path : '/git'},
+    { title :'Node JS', path : '/node'},
+    { title :'Npm', path : '/npm'},
+    { title :'Html', path : '/html'},
+    { title :'Css', path : '/css'},
+];
+
+function Header(){
+    const {dark} = React.useContext(ThemeContext);
+    const {t} = useTranslation('common');
+    const [navList] = useState(hList);
+    return (
+        <header className={dark ? "header-dark" : "header"}>
+            <h1 className="header-title">{t('title')}<Clock/></h1>
+                <ul className="nav-header">
+                    {navList.map((value) => 
+                        <li key={value.title} className="nav-item">
+                            <a href={value.path} className={dark ? "nav-link-dark" : "nav-link"}>{value.title}</a>
+                        </li>)}
+                </ul>
+        </header>
+    )
 }
 
-class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-            navList : [
-              { title :'VCS', path : '/'},
-              { title :'Git', path : '/git'},
-              { title :'Node JS', path : '/node'},
-              { title :'Npm', path : '/npm'},
-              { title :'Html', path : '/html'},
-              { title :'Css', path : '/css'},
-            ],
-        };
-    }
-    render() {
-        const {navList} = this.state;
-        const { lang } = this.props;
-        let theme = this.context;
-        return (
-            <header className='header' style={{backgroundColor : theme.backgroundColor, color : theme.color}}>
-                <h1 className="header-title">{translations[lang]["title"]} <Clock/></h1>
-                    <ul className="nav-header">
-                        {navList.map((value) => 
-                            <li key={value.title} className="nav-item">
-                                <a href={value.path} className="nav-link" style={{color : theme.color}}>{value.title}</a>
-                            </li>)}
-                    </ul>
-            </header>
-        )
-    }
-}
-
-Header.contextType = ThemeContext;
 export default Header;

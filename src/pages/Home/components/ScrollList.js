@@ -32,7 +32,7 @@ export default class ScrollList extends Component {
       return null;
     }
   
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    componentDidUpdate(snapshot) {
       // if snapshot is available, use it to adjust scroll position
       if (snapshot !== null) {
         const list = this.listRef.current;
@@ -74,7 +74,8 @@ export default class ScrollList extends Component {
                 onDragStart={this.dragStart.bind(this)}
                 onDragOver={this.dragOver.bind(this)}>
                     {translations[lang]["person"] + item.fullname.name + ' ' + item.fullname.sername + 
-                    translations[lang]["age"] + item.age + translations[lang]["bp"] + item.placeOfBirth + translations[lang]["bd"] + item.yearOfBirth}</li>
+                    translations[lang]["age"] + item.age + translations[lang]["bp"] + item.placeOfBirth 
+                    + translations[lang]["bd"] + item.yearOfBirth}</li>
                 ))}
           </ul>
       );

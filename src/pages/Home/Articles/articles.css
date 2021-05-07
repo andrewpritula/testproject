@@ -1,3 +1,21 @@
+.container {
+  padding: 100px;
+  background-color: #eb6565;
+  color: white;
+  overflow: auto;
+  text-align: justify;
+  font-size: 18px;
+}
+
+.container-dark {
+  padding: 100px;
+  background-color: #666;
+  color: #000;
+  overflow: auto;
+  text-align: justify;
+  font-size: 18px;
+}
+
 .left-part {
   width: 50%;
   float: left;
@@ -43,7 +61,4 @@
 #vcs-img {
   height: 350px;
   width: 500px;
-}
-.container {
-  padding: 100px;
 }

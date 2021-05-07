@@ -1,0 +1,36 @@
+{
+    "title": "Testproject",
+
+    "name": "Andrew Pritula",
+    "git": "Git Hub",
+    "design": "Design",
+
+    "vcsTitle": "VCS",
+    "vcsInfo": "In software engineering, version control (also known as revision control, source control, or source code management) is a class of systems responsible for managing changes to computer programs, documents, large web sites, or other collections of information. Version control is a component of software configuration management.",
+
+    "gitTitle": "GIT",
+    "gitInfo": "Git (/ɡɪt/) is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development. Its goals include speed, data integrity, and support for distributed, non-linear workflows (thousands of parallel branches running on different systems)",
+
+    "cssTitle": "Css",
+    "cssInfo": "Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript",
+
+    "htmlTitle": "Html",
+    "htmlInfo": "The HyperText Markup Language, or HTML is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.",
+
+    "nodeTitle": "Node JS",
+    "nodeInfo": "Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser. Node.js lets developers use JavaScript to write command line tools and for server-side scripting—running scripts server-side to produce dynamic web page content before the page is sent to the user's web browser. Consequently, Node.js represents a JavaScript everywhere paradigm, unifying web-application development around a single programming language, rather than different languages for server-side and client-side scripts.",
+    
+    "npmTitle": "NPM",
+    "npmInfo": "Npm is the default package manager for the JavaScript runtime environment Node.js. It consists of a command line client, also called npm, and an online database of public and paid-for private packages, called the npm registry. The registry is accessed via the client, and the available packages can be browsed and searched via the npm website. The package manager and the registry are managed by npm, Inc.",
+
+    "tableTitle": "Event",
+    "tableSummary": "Sumarry",
+    "tableLink": "Link",
+
+    "buttonSort" : "Sort",
+    "person" : "Person: ",
+    "age" : " Age: ",
+    "bp" : " Birthplace: ",
+    "bd" : " Birthdate: ",
+    "themeButton" : "Change theme"
+}

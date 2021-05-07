@@ -14,11 +14,11 @@ body {
   padding: 75px 75px 0;
 }
 
-.container {
-  overflow: auto;
-  text-align: justify;
-  font-size: 18px;
-} 
+#page-dark {
+  background-color:#999999;
+  border-radius: 15px;
+  padding: 75px 75px 0;
+}
 
 .language-button {
   margin: 5px;
@@ -35,3 +35,21 @@ body {
   float: right;
   border-radius: 5px;
 }
+
+.content, .content-dark {
+  margin: 1rem 0;
+  width: 80%;
+  
+  padding: 2rem;
+  height: 200px;
+}
+
+.content {
+  background-color: #f2f2f2;
+}
+
+.content-dark {
+  background-color: #2e2e2e;
+  color: #ebebeb;
+}
+

@@ -13,11 +13,16 @@ tr, th, td {
     font-size: 18px;
 }
 
-.table-link, .table-link:visited {
+.table-link{
     color : #fff;
     text-decoration: none;
 }
   
-.table-link:hover{
+.table-link:hover {
     text-decoration: underline;
+}
+
+.table-link-dark {
+    color : #000;
+    text-decoration: none;
 }

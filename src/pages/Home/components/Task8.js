@@ -1,253 +1,139 @@
-import React, { Component } from 'react'
-
+import React, { useState } from 'react'
 import './Styles/task8.css'
-import ScrollList from './ScrollList'
-import {ThemeContext} from '../../Home/components/theme-context';
+import ThemeContext from './ThemeContext'
+import {useTranslation} from "react-i18next";
 
-const translations = {
-    "ru": {
-      'sort' : 'Сортировать',
-      'reset' : 'Cброс',
-      
+const items = [
+    {
+        //2-nd lvl of nesting
+        fullname : {
+            name : 'Tim',
+            sername : 'Berners-Lee',
+        },
+        yearOfBirth : 1955,
+        placeOfBirth : 'London',
+        age : 65,
     },
-    "en": {
-      'sort' : 'Sort',
-      'reset' : 'Reset',
-    }
+
+    {
+        //2-nd lvl of nesting
+        fullname : {
+            name : 'Bill',
+            sername : 'Gates',
+        },
+        yearOfBirth : 1935,
+        placeOfBirth : 'Seattle',
+        age : 65,
+    },
+
+    {   
+        //2-nd lvl of nesting
+        fullname : {
+            name : 'James ',
+            sername : 'Gosling',
+        },
+        yearOfBirth : 1925,
+        placeOfBirth : 'Calgary',
+        age : 65,
+    },
+
+    {
+        //2-nd lvl of nesting
+        fullname : {
+            name : 'Andrew ',
+            sername : 'Pritula',
+        },
+        yearOfBirth : 1996,
+        placeOfBirth : 'Krop',
+        age : 24,
+    },
+
+    {
+        //2-nd lvl of nesting
+        fullname : {
+            name : 'Sergey ',
+            sername : 'Pritula',
+        },
+        yearOfBirth : 1996,
+        placeOfBirth : 'Kirov',
+        age : 25,
+    },
+];
+
+const testPerson = {
+    //2-nd lvl of nesting
+    fullname : {
+        name : 'testName',
+        sername : 'testSername',
+    },
+    yearOfBirth : 2021,
+    placeOfBirth : 'testPlace',
+    age : 100,
 }
 
-class Task8 extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
+function Task8() {
+    const {dark} = React.useContext(ThemeContext);
+    const {t} = useTranslation('common');
+    let [persons, setPersons] = useState(items);
+    const [newPerson] = useState(testPerson);
+    const [personsInFly, setTaskInFly] = useState("")
 
-            items: [
-                {
-                    //2-nd lvl of nesting
-                    fullname : {
-                        name : 'Tim',
-                        sername : 'Berners-Lee',
-                    },
-                    yearOfBirth : 1955,
-                    placeOfBirth : 'London',
-                    age : 65,
-                },
-
-                {
-                    //2-nd lvl of nesting
-                    fullname : {
-                        name : 'Bill',
-                        sername : 'Gates',
-                    },
-                    yearOfBirth : 1935,
-                    placeOfBirth : 'Seattle',
-                    age : 65,
-                },
-
-                {
-                    //2-nd lvl of nesting
-                    fullname : {
-                        name : 'James ',
-                        sername : 'Gosling',
-                    },
-                    yearOfBirth : 1925,
-                    placeOfBirth : 'Calgary',
-                    age : 65,
-                },
-
-                {
-                    //2-nd lvl of nesting
-                    fullname : {
-                        name : 'Andrew ',
-                        sername : 'Pritula',
-                    },
-                    yearOfBirth : 1996,
-                    placeOfBirth : 'Krop',
-                    age : 24,
-                },
-
-                {
-                    //2-nd lvl of nesting
-                    fullname : {
-                        name : 'Sergey ',
-                        sername : 'Pritula',
-                    },
-                    yearOfBirth : 1996,
-                    placeOfBirth : 'Kirov',
-                    age : 25,
-                },
-
-                {
-                    //2-nd lvl of nesting
-                    fullname : {
-                        name : 'Anthony',
-                        sername : 'Linked',
-                    },
-                    yearOfBirth : 1995,
-                    placeOfBirth : 'Boston',
-                    age : 26,
-                },
-
-                {
-                    //2-nd lvl of nesting
-                    fullname : {
-                        name : 'Tommy',
-                        sername : 'Versetty',
-                    },
-                    yearOfBirth : 1975,
-                    placeOfBirth : 'NY',
-                    age : 45,
-                },
-
-                {
-                    //2-nd lvl of nesting
-                    fullname : {
-                        name : 'Joe',
-                        sername : 'Biden',
-                    },
-                    yearOfBirth : 1900,
-                    placeOfBirth : 'London',
-                    age : 120,
-                }
-            ],
-
-            testPerson : {
-                //2-nd lvl of nesting
-                fullname : {
-                    name : 'testName',
-                    sername : 'testSername',
-                },
-                yearOfBirth : 2021,
-                placeOfBirth : 'testPlace',
-                age : 100,
-            }
-        };
+    const handleDragStart = (event, person) => {
+        setTaskInFly(person)
     }
-  
-    handleAddClick(value) {
-      const {items} = this.state;
-      this.setState({ items: [...items, value] });
-    };
 
-    handleDeleteClick(value){
+    const handleDragOver = event => {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    const handleDrop = (event, person) => {
+        const temp = [...persons];
+        const fromIndex = temp.findIndex((elem) => elem === personsInFly);
+        const toIndex = temp.findIndex((elem) => elem === person);
+        temp.splice(fromIndex, 1);
+        temp.splice(toIndex, 0, personsInFly);
+        setPersons(temp);
+    }
+    
+    function handleAddClick(value) {
+        setPersons(persons = [...persons, value]);
+    };
+  
+    function handleDeleteClick(value){
         const items = value;
         items.pop();
-        this.setState({ items: items });
+        setPersons(persons = [...items]);
     };
 
-    handleSortClick(arr, param){
-      const items = arr;
-      items.sort(((a, b) => a[param] > b[param] ? 1 : -1));
-      this.setState({ items: items });
+    function handleSortClick(arr, param){
+        const items = arr;
+        items.sort(((a, b) => a[param] > b[param] ? 1 : -1));
+        setPersons( persons = [...items] );
     };
 
-    handleReset = () => {
-        this.setState({
-            items: [
-            {
-                //2-nd lvl of nesting
-                fullname : {
-                    name : 'Tim',
-                    sername : 'Berners-Lee',
-                },
-                yearOfBirth : 1955,
-                placeOfBirth : 'London',
-                age : 65,
-            },
-
-            {
-                //2-nd lvl of nesting
-                fullname : {
-                    name : 'Bill',
-                    sername : 'Gates',
-                },
-                yearOfBirth : 1935,
-                placeOfBirth : 'Seattle',
-                age : 65,
-            },
-
-            {
-                //2-nd lvl of nesting
-                fullname : {
-                    name : 'James ',
-                    sername : 'Gosling',
-                },
-                yearOfBirth : 1925,
-                placeOfBirth : 'Calgary',
-                age : 65,
-            },
-
-            {
-                //2-nd lvl of nesting
-                fullname : {
-                    name : 'Andrew ',
-                    sername : 'Pritula',
-                },
-                yearOfBirth : 1996,
-                placeOfBirth : 'Krop',
-                age : 24,
-            },
-
-            {
-                //2-nd lvl of nesting
-                fullname : {
-                    name : 'Sergey ',
-                    sername : 'Pritula',
-                },
-                yearOfBirth : 1996,
-                placeOfBirth : 'Kirov',
-                age : 25,
-            },
-            
-            {
-                //2-nd lvl of nesting
-                fullname : {
-                    name : 'Anthony',
-                    sername : 'Linked',
-                },
-                yearOfBirth : 1995,
-                placeOfBirth : 'Boston',
-                age : 26,
-            },
-
-            {
-                //2-nd lvl of nesting
-                fullname : {
-                    name : 'Tommy',
-                    sername : 'Versetty',
-                },
-                yearOfBirth : 1975,
-                placeOfBirth : 'NY',
-                age : 45,
-            },
-
-            {
-                //2-nd lvl of nesting
-                fullname : {
-                    name : 'Joe',
-                    sername : 'Biden',
-                },
-                yearOfBirth : 1900,
-                placeOfBirth : 'London',
-                age : 120,
-            }
-        ]});
-    }
-
-    render() {
-        let theme = this.context;
-        const { lang } = this.props;
-        return (
-            <div className='dnd-list card container' style={{backgroundColor : theme.backgroundColor, color : theme.color}}>
-                <button className = 'button' onClick={() => this.handleAddClick(this.state.testPerson)}>+</button>
-                <button className = 'button' onClick={() => this.handleDeleteClick(this.state.items)}>-</button>
-                <button className = 'button' onClick={() => this.handleSortClick(this.state.items, 'age')}>{translations[lang]["sort"]}</button>
-                <button className = 'button' onClick={this.handleReset}>{translations[lang]["reset"]}</button>
-                <ScrollList lang = {lang} items={this.state.items} />
-            </div>
-        );
-    }
+    return (
+        <div className={dark ? "container-dark" : "container"}>
+            <button className = 'button' onClick={() => handleAddClick(newPerson)}>+</button>
+            <button className = 'button' onClick={() => handleDeleteClick(persons)}>-</button>
+            <button className = 'button' onClick={() => handleSortClick(persons, 'age')}>{t('buttonSort')}</button>
+            <ul className="item-list">
+                {persons.map((item, index) => (
+                    <li key={index} 
+                    className="tasks__item"
+                    draggable="true"
+                    onDrop={event => handleDrop(event, item)}
+                    onDragOver={event => handleDragOver(event)}
+                    onDragStart={event => handleDragStart(event, item)}
+                    >
+                    {t('person') + item.fullname.name + ' ' + item.fullname.sername + 
+                     t('age')  + item.age + 
+                     t('bp') + item.placeOfBirth + 
+                     t('bd')  + item.yearOfBirth}</li>
+                ))}
+            </ul>
+        </div>
+    )
 }
 
-Task8.contextType = ThemeContext;
 export default Task8;

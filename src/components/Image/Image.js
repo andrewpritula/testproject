@@ -1,37 +1,28 @@
-import React, { Component } from 'react'
-
+import React, { useState } from 'react'
+import ThemeContext from '../../pages/Home/components/ThemeContext'
 import './Css/image.css'
-import {ThemeContext} from '../../pages/Home/components/theme-context';
 
-class ImageWithStatusText extends Component {
-    constructor(props) {
-      super(props);
-      this.state = { imageStatus: "loading" , src : 'https://avatanplus.com/files/resources/original/578a3ffb9cb68155f409eefa.png'};
+function ImageWithStatusText() {
+    const {dark} = React.useContext(ThemeContext);
+    const [src] = useState('https://avatanplus.com/files/resources/original/578a3ffb9cb68155f409eefa.png');
+  
+    function handleImageLoaded() {
+        console.log('load');
     }
   
-    handleImageLoaded() {
-        console.log('Image Load');
-        this.setState({ imageStatus: "loaded" });
+    function handleImageErrored() {
+        console.log('error');
     }
-  
-    handleImageErrored() {
-        console.log("Image Error");
-        this.setState({ imageStatus: "failed to load" });
-    }
-  
-    render() {
-        let theme = this.context;
-        return (
-            <div className='img-onload-onerror container' style={{backgroundColor : theme.backgroundColor, color : theme.color}}>
-            <img className='img-test' alt = 'pokemon' draggable='false'
-                src= {this.state.src}
-                onLoad={() => this.handleImageLoaded()}
-                onError={() => this.handleImageErrored()}
-            />
-            </div>
-        );
-    }
+   
+    return (
+        <div className={dark ? "container-dark" : "container"}>
+        <img className='img-test' alt = 'pokemon' draggable='false'
+            src= {src}
+            onLoad={() => handleImageLoaded()}
+            onError={() => handleImageErrored()}
+        />
+        </div>
+    )
 }
 
-ImageWithStatusText.contextType = ThemeContext;
 export default ImageWithStatusText;
