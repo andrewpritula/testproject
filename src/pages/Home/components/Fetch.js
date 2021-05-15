@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Styles/fetch.css'
-import ThemeContext from './ThemeContext'
+import ThemeContext from '../../../context/ThemeContext'
 import {useTranslation} from "react-i18next";
 
 function Fetch() {
@@ -9,7 +9,7 @@ function Fetch() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  
+
    // Примечание: пустой массив зависимостей [] означает, что
   // этот useEffect будет запущен один раз
   // аналогично componentDidMount()
@@ -35,30 +35,30 @@ function Fetch() {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-      return (
-        <div className={dark ? "container-dark" : "container"}>
-          <table className="table">
-            <thead>
-                <tr>
-                  <th>{t('tableTitle')}</th>
-                  <th>{t('tableSummary')}</th>
-                  <th>{t('tableLink')}</th>
-                </tr>
-            </thead>
-            <tbody key ='tbody'>
-              {items.map((item, index) => 
-              <tr key={index}>
-                <td>{item.title}</td>
-                <td>{item.summary}</td>
-                <td>
-                  <a className={dark ? "table-link-dark" : "table-link"} href={item.url}>{t('tableLink')}</a>
-                </td>
+    return (
+      <div className={dark ? "container-dark" : "container"}>
+        <table className="table">
+          <thead>
+              <tr>
+                <th>{t('tableTitle')}</th>
+                <th>{t('tableSummary')}</th>
+                <th>{t('tableLink')}</th>
               </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-      );
+          </thead>
+          <tbody key ='tbody'>
+            {items.map((item, index) => 
+            <tr key={index}>
+              <td>{item.title}</td>
+              <td>{item.summary}</td>
+              <td>
+                <a className={dark ? "table-link-dark" : "table-link"} href={item.url}>{t('tableLink')}</a>
+              </td>
+            </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    );
   }
 }
 

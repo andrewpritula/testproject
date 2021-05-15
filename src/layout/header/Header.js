@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Css/header.css'
 import Clock from '../../components/Clock/Clock'
-import ThemeContext from '../../pages/Home/components/ThemeContext'
+import ThemeContext from '../../context/ThemeContext'
 import {useTranslation} from "react-i18next";
 
 const hList = [

@@ -1,28 +1,15 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
-import './Css/clock.css'
+import React, { Fragment } from 'react';
+import useTimer from '../../hook/UseTimer';
+import './Css/clock.css';
 
 function Clock(props) {
-  const [date, setDate] = useState(new Date());
+  const timer = useTimer(new Date());
 
- //Replaces componentDidMount and componentWillUnmount
- useEffect(() => {
-  var timerID = setInterval( () => tick(), 1000 );
-
-  return function cleanup() {
-      clearInterval(timerID);
-    };
- });
-
-   function tick() {
-    setDate(new Date());
-   }
-
-   return (
-      <div className='clock'>
-        {date.toLocaleTimeString()}
-      </div>
-    );
+  return (
+    <Fragment>
+      {timer.toLocaleTimeString()}
+    </Fragment>
+  );
 }
 
 export default Clock;

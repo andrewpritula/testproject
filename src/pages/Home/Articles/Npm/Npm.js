@@ -2,7 +2,7 @@ import React from 'react'
 import '../articles.css'
 import imgNPM from '../../../../accets/images/npm.png'
 
-import ThemeContext from '../../components/ThemeContext'
+import ThemeContext from '../../../../context/ThemeContext'
 import {useTranslation} from "react-i18next";
 
 function NPM(){

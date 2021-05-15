@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Styles/task8.css'
-import ThemeContext from './ThemeContext'
+import ThemeContext from '../../../context/ThemeContext'
 import {useTranslation} from "react-i18next";
 
 const items = [
@@ -76,10 +76,10 @@ function Task8() {
     const {t} = useTranslation('common');
     let [persons, setPersons] = useState(items);
     const [newPerson] = useState(testPerson);
-    const [personsInFly, setTaskInFly] = useState("")
+    const [personsInFly, setPersonInFly] = useState("")
 
     const handleDragStart = (event, person) => {
-        setTaskInFly(person)
+        setPersonInFly(person)
     }
 
     const handleDragOver = event => {

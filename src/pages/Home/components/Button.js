@@ -1,5 +1,5 @@
 import React from 'react'
-import ThemeContext from './ThemeContext'
+import ThemeContext from '../../../context/ThemeContext'
 import './Styles/Button.css'
 import {useTranslation} from "react-i18next";
 
@@ -8,7 +8,7 @@ const Button = () => {
   const { dark, toggleDark} = React.useContext(ThemeContext);
   
   return(
-    <button className={dark ? "theme-button-dark" : "theme-button"} onClick={e => toggleDark(e,dark)}>
+    <button className={dark ? "theme-button-dark" : "theme-button"} onClick={e => toggleDark(e, dark)}>
       {t('themeButton')}
     </button>
   )

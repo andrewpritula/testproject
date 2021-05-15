@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ThemeContext from '../../pages/Home/components/ThemeContext'
+import ThemeContext from '../../context/ThemeContext'
 import './Css/image.css'
 
 function ImageWithStatusText() {

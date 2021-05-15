@@ -1,7 +1,7 @@
 import React from 'react'
 import '../articles.css'
 import imgHtml from '../../../../accets/images/html.png'
-import ThemeContext from '../../components/ThemeContext'
+import ThemeContext from '../../../../context/ThemeContext'
 import {useTranslation} from "react-i18next";
 
 function Html(){ 
