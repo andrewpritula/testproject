@@ -11,8 +11,8 @@ function VCS() {
     return(
         <div className={dark ? "container-dark" : "container"}>
             <div className="left-part">
-                <h3>{t('gitTitle')}</h3>
-                <div>{t('gitInfo')}</div>
+                <h3>{t('vcsTitle')}</h3>
+                <div>{t('vcsInfo')}</div>
             </div>
             <div className="rigth-part">
                 <img src={imgVCS} alt="vcs" id="vcs-img" className="overview-img"></img>
