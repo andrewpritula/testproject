@@ -31,34 +31,16 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-#git-img {
-  height: 200px;
-  width: 400px;
-}
-
-#css-img {
-  height: 400px;
+  height: 320px;
   width: 300px;
 }
 
-#html-img {
-  height: 400px;
-  width: 400px;
-}
-
-#node-img {
-  height: 300px;
-  width: 350px;
-}
-
-#npm-img {
-  height: 150px;
-  width: 300px;
-}
-
-#vcs-img {
-  height: 350px;
-  width: 500px;
+.article-button {
+  border: none;
+  padding: 10px;
+  border-radius: 25px;
+  margin-top: 25px;
+  margin: 25px 0;
+  font-size: 16px;
+  font-weight: 600;
 }

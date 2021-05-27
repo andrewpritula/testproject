@@ -1,19 +1,80 @@
 .theme-button {
-    border: none;
-    cursor: pointer;
-    color: white;
-    border-radius: 15px;
-    background-color: #eb6565;
-    padding: 10px;
-    margin: 0 10px 10px 0;
+  float:right;
+  width: 60px;
+  height: 34px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  border-radius: 25px;
+  background-color: #eb6565;
 }
 
 .theme-button-dark {
-    border: none;
-    cursor: pointer;
-    color: black;
-    border-radius: 15px;
-    background-color: #666666;;
-    padding: 10px;
-    margin: 0 10px 10px 0;
+  float:right;
+  width: 60px;
+  height: 34px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  color: black;
+  border-radius: 25px;
+  background-color: #666666;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 5px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #eb6565;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #666666;;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }

@@ -1,43 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import './Styles/fetch.css'
+import React from 'react'
+import { connect } from 'react-redux'
+import { fetchData } from '../../../store/action'
+import loader from '../../../accets/images/loader.gif'
 import ThemeContext from '../../../context/ThemeContext'
 import {useTranslation} from "react-i18next";
+import './Styles/fetch.css'
 
-function Fetch() {
-  const {t} = useTranslation('common');
+function Fetch(props){
   const {dark} = React.useContext(ThemeContext);
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);
+  const {t} = useTranslation('common');
 
-   // Примечание: пустой массив зависимостей [] означает, что
-  // этот useEffect будет запущен один раз
-  // аналогично componentDidMount()
-  useEffect(() => {
-    fetch("https://spaceflightnewsapi.net/api/v2/articles")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result);
-        },
-        // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-        // чтобы не перехватывать исключения из ошибок в самих компонентах.
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
-  }, [])
+  function handleClick() {
+    props.dispatch(fetchData());
+  }
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Loading...</div>;
-  } else {
-    return (
-      <div className={dark ? "container-dark" : "container"}>
-        <table className="table">
+  return (
+    <div className={dark ? "container-dark" : "container"}>
+      <button className = 'button' type="button" onClick={handleClick}>Get articles</button>
+      {props.isFetching && <img className='loader' src={loader} alt='loader'/>}
+      <table className="table">
           <thead>
               <tr>
                 <th>{t('tableTitle')}</th>
@@ -46,20 +27,24 @@ function Fetch() {
               </tr>
           </thead>
           <tbody key ='tbody'>
-            {items.map((item, index) => 
-            <tr key={index}>
+          {props.myData.map(item => 
+            <tr key={item.id}>
               <td>{item.title}</td>
               <td>{item.summary}</td>
               <td>
                 <a className={dark ? "table-link-dark" : "table-link"} href={item.url}>{t('tableLink')}</a>
               </td>
             </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
-    );
-  }
+          )}    
+        </tbody>
+      </table> 
+    </div>
+  );
 }
 
-export default Fetch;
+const mapStateToProps = ({ things: { myData, isFetching } }) => ({
+  myData,
+  isFetching
+});
+
+export default connect(mapStateToProps)(Fetch);

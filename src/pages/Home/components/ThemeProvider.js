@@ -4,10 +4,10 @@ import ThemeContext from '../../../context/ThemeContext'
 const ThemeProvider = ({children}) => {
     const [dark, setDark] = React.useState(false);
     
-    const toggleDark = (e, dark2) => {
-        let dark = !dark2
+    const toggleDark = (e, value) => {
+        let dark = !value;
         localStorage.setItem("dark", JSON.stringify(dark));
-        setDark(dark)
+        setDark(dark);
     }
     
     React.useEffect(() => {
