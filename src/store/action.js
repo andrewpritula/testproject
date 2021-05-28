@@ -3,18 +3,18 @@ export const GET_DATA_FIRST = 'GET_DATA_FIRST'; // action to represent receiving
 
 export const requestData = () => ({ type: REQUEST_DATA });
 
-export const getDataFirst = myData => ({ type: GET_DATA_FIRST, myData });
+export const getDataFirst = (myData) => ({ type: GET_DATA_FIRST, myData });
 
-export const fetchData = () => dispatch => {
+const getData = () => {
+  return fetch('https://spaceflightnewsapi.net/api/v2/articles').then((res) => res.json());
+};
+
+export const fetchData = () => (dispatch) => {
   dispatch(requestData());
-  return getData().then(things => {
+  return getData().then((things) => {
     // simulated delay
     setTimeout(() => {
-      return dispatch(getDataFirst(things))
+      return dispatch(getDataFirst(things));
     }, 1000);
   });
 };
-
-const getData = () => {  
-  return fetch('https://spaceflightnewsapi.net/api/v2/articles').then(res => res.json());
-}

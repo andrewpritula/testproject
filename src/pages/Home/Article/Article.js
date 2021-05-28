@@ -1,74 +1,116 @@
-import React, { useState } from 'react'
-import ThemeContext from '../../../context/ThemeContext'
-import {useTranslation} from "react-i18next";
-import './article.css'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+import ThemeContext from '../../../context/ThemeContext';
+import './article.css';
 
 function Article(props) {
-    console.log(props);
-    const {dark} = React.useContext(ThemeContext);
-    const [isShowed, setIsShowed] = useState(false);
-    const handleLoginClick = () => {
-        setIsShowed(true);
-    }
+  const { dark } = React.useContext(ThemeContext);
+  const [isShowed, setIsShowed] = useState(false);
+  const {
+    title, 
+    info, 
+    infoMore, 
+    image 
+  } = props;
+  
+  const handleLoginClick = () => {
+    setIsShowed(true);
+  };
     
-    const handleLogoutClick = () =>{
-        setIsShowed(false);
-    }
+  const handleLogoutClick = () => {
+    setIsShowed(false);
+  };
 
-    let button;
-    if (isShowed) {
-        button = <LogoutButton onClick={() => handleLogoutClick()} />;
-    } else {
-        button = <LoginButton onClick={() =>handleLoginClick()} />;
-    }
-    return(
-        <div className={dark ? "container-dark" : "container"}>
-            <div className="left-part">
-                <h3>{props.title}</h3>
-                <div>{props.info}</div>
-                {button}
-                <Show isShowed={isShowed} infoMore={props.infoMore}/>
-            </div>
-            <div className="rigth-part">
-                <img src={props.image} alt='objImg' className="overview-img"></img>
-            </div>
-        </div>
-    )
+  let button;
+  if (isShowed) {
+    button = <LogoutButton onClick={() => handleLogoutClick()} />;
+  } else {
+    button = <LoginButton onClick={() => handleLoginClick()} />;
+  }
+  return (
+    <div className={dark ? 'container-dark' : 'container'}>
+      <div className="left-part">
+        <h3>{title}</h3>
+        <div>{info}</div>
+        {button}
+        <Show isShowed={isShowed} infoMore={infoMore} />
+      </div>
+      <div className="rigth-part">
+        <img src={image} alt="objImg" className="overview-img" />
+      </div>
+    </div>
+  );
 }
 
-
 function More(props) {
-    return <p>{props.infoMore}</p>;
+  const { infoMore } = props;
+  return <p>{infoMore}</p>;
 }
   
 function Less() {
-    return null
+  return null;
 }
   
 function Show(props) {
-    const isShowed = props.isShowed;
-    if (isShowed) {
-        return <More infoMore={props.infoMore}/>;
-    }
-    return <Less/>;
+  const { isShowed } = props;
+  const { infoMore } = props;
+  if (isShowed) {
+    return <More infoMore={infoMore} />;
+  }
+  return <Less />;
 }
   
 function LoginButton(props) {
-    const {t} = useTranslation('common');
-    return (
-        <button className='article-button' onClick={props.onClick}>
-            {t('showMore')}
-        </button>
-    );
+  const { t } = useTranslation('common');
+  const { onClick } = props;
+  return (
+    <button 
+      type="button"
+      className="article-button" 
+      onClick={onClick}
+    >
+      {t('showMore')}
+    </button>
+  );
 }
   
 function LogoutButton(props) {
-    const {t} = useTranslation('common');
-    return (
-        <button className='article-button' onClick={props.onClick}>
-            {t('showLess')}
-        </button>
-    );
+  const { t } = useTranslation('common');
+  const { onClick } = props;
+  return (
+    <button 
+      type="button"
+      className="article-button" 
+      onClick={onClick}
+    >
+      {t('showLess')}
+    </button>
+  );
 }
+
+Article.propTypes = {
+  title: PropTypes.string.isRequired,
+  info: PropTypes.string.isRequired,
+  infoMore: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired
+};
+
+More.propTypes = {
+  infoMore: PropTypes.string.isRequired,
+};
+  
+Show.propTypes = {
+  isShowed: PropTypes.bool.isRequired,
+  infoMore: PropTypes.string.isRequired,
+};
+
+LoginButton.propTypes = {
+  onClick: PropTypes.func.isRequired
+};
+
+LogoutButton.propTypes = {
+  onClick: PropTypes.func.isRequired
+};
 
 export default Article;

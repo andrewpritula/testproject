@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export const defaultState = {
-    dark: false,
-    toggleDark: () => {},
-}
+  dark: false,
+  toggleDark: () => {},
+};
   
 const ThemeContext = React.createContext(defaultState);
 export default ThemeContext;
