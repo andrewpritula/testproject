@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import ThemeContext from '../../../context/ThemeContext';
-import './article.css';
+import './Styles/article.css';
 
 function Article(props) {
   const { dark } = React.useContext(ThemeContext);

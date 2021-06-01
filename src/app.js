@@ -4,7 +4,7 @@ import './style.css';
 import { useTranslation } from 'react-i18next';
 import Header from './layout/header/Header';
 import Footer from './layout/footer/Footer';
-import Article from './pages/Home/Article/Article';
+import Article from './pages/Home/components/Article';
 import vcsImg from './accets/images/vcs.png';
 import gitImg from './accets/images/git.png';
 import nodeImg from './accets/images/node.png';
@@ -12,7 +12,7 @@ import npmImg from './accets/images/npm.png';
 import htmlImg from './accets/images/html.png';
 import cssImg from './accets/images/css.png';
 import Image from './components/Image/Image';
-import ItemList from './pages/Home/components/Fetch';
+import Fetch from './pages/Home/components/Fetch';
 import TodoList from './pages/Home/components/TodoList';
 import ThemeContext from './context/ThemeContext';
 import ThemeToggle from './pages/Home/components/ThemeToggle';
@@ -64,7 +64,7 @@ function App() {
           </Router>
         </section>
         <section>
-          <ItemList />
+          <Fetch />
           <TodoList />
           <Image />
         </section>

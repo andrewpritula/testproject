@@ -18,7 +18,7 @@ function Fetch(props) {
 
   return (
     <div className={dark ? 'container-dark' : 'container'}>
-      <button className="button" type="button" onClick={handleClick}>Get articles</button>
+      <button className="button" type="button" onClick={handleClick}>{t('getArticles')}</button>
       {isFetching && <img className="loader" src={loader} alt="loader" />}
       <table className="table">
         <thead>
