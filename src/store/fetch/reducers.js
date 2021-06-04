@@ -1,5 +1,4 @@
-import { combineReducers } from 'redux';
-import { GET_DATA_FIRST, REQUEST_DATA } from './action';
+import { GET_DATA_FIRST, REQUEST_DATA } from './types';
 
 const initialState = {
   isFetching: false,
@@ -24,8 +23,4 @@ const things = (state = initialState, action) => {
   }
 };
 
-const rootReducer = combineReducers({
-  things // this key can be called anything, 'things' is just an example
-});
-
-export default rootReducer;
+export default things;

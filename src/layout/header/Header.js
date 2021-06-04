@@ -13,12 +13,23 @@ const hList = [
   { title: 'Css', path: '/css' },
 ];
 
+const classNames = require('classnames');
+
 function Header() {
   const { dark } = React.useContext(ThemeContext);
   const { t } = useTranslation('common');
   const [navList] = useState(hList);
+  const headerClass = classNames({
+    'header-dark': dark,
+    header: !dark
+  });
+  
+  const navLinkClass = classNames({
+    'nav-link-dark': dark,
+    'nav-link': !dark
+  });
   return (
-    <header className={dark ? 'header-dark' : 'header'}>
+    <header className={headerClass}>
       <h1 className="header-title">
         {t('title')}
         <Clock />
@@ -26,7 +37,7 @@ function Header() {
       <ul className="nav-header">
         {navList.map((value) => (
           <li key={value.title} className="nav-item">
-            <a href={value.path} className={dark ? 'nav-link-dark' : 'nav-link'}>{value.title}</a>
+            <a href={value.path} className={navLinkClass}>{value.title}</a>
           </li>
         ))}
       </ul>

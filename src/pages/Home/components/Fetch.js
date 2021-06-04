@@ -2,22 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { fetchData } from '../../../store/action';
+import { fetchData } from '../../../store/fetch/actions';
 import loader from '../../../accets/images/loader.gif';
 import ThemeContext from '../../../context/ThemeContext';
 import './Styles/fetch.css';
+
+const classNames = require('classnames');
 
 function Fetch(props) {
   const { dark } = React.useContext(ThemeContext);
   const { t } = useTranslation('common');
   const { dispatch, isFetching, myData } = props;
+  
+  const containerClass = classNames({
+    'container-dark': dark,
+    container: !dark
+  });
+
+  const tableLinkClass = classNames({
+    'table-link-dark': dark,
+    'table-link': !dark
+  });
 
   function handleClick() {
     dispatch(fetchData());
   }
 
   return (
-    <div className={dark ? 'container-dark' : 'container'}>
+    <div className={containerClass}>
       <button className="button" type="button" onClick={handleClick}>{t('getArticles')}</button>
       {isFetching && <img className="loader" src={loader} alt="loader" />}
       <table className="table">
@@ -34,7 +46,7 @@ function Fetch(props) {
               <td>{item.title}</td>
               <td>{item.summary}</td>
               <td>
-                <a className={dark ? 'table-link-dark' : 'table-link'} href={item.url}>{t('tableLink')}</a>
+                <a className={tableLinkClass} href={item.url}>{t('tableLink')}</a>
               </td>
             </tr>
           ))}    

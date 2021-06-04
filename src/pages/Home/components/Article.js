@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import ThemeContext from '../../../context/ThemeContext';
 import './Styles/article.css';
 
+const classNames = require('classnames');
+
 function Article(props) {
   const { dark } = React.useContext(ThemeContext);
   const [isShowed, setIsShowed] = useState(false);
@@ -13,7 +15,12 @@ function Article(props) {
     infoMore, 
     image 
   } = props;
-  
+
+  const containerClass = classNames({
+    'container-dark': dark,
+    container: !dark
+  });
+
   const handleLoginClick = () => {
     setIsShowed(true);
   };
@@ -29,7 +36,7 @@ function Article(props) {
     button = <LoginButton onClick={() => handleLoginClick()} />;
   }
   return (
-    <div className={dark ? 'container-dark' : 'container'}>
+    <div className={containerClass}>
       <div className="left-part">
         <h3>{title}</h3>
         <div>{info}</div>

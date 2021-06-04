@@ -42,8 +42,8 @@ function TodoList() {
     }
   };
 
-  const deleteTodo = (id) => {
-    setList(list.filter((item) => item.id !== id));
+  const deleteTodo = (position) => {
+    setList(list.filter((item) => item.id !== position));
   };
 
   return (

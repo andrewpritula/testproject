@@ -27,10 +27,11 @@ const ThemeProvider = ({ children }) => {
 };
 
 ThemeProvider.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.element
 };
 
 ThemeProvider.defaultProps = {
   children: React.createElement('div')
 };
+
 export default ThemeProvider;

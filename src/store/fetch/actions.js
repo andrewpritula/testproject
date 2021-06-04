@@ -1,5 +1,4 @@
-export const REQUEST_DATA = 'REQUEST_DATA'; // action to represent waiting for response
-export const GET_DATA_FIRST = 'GET_DATA_FIRST'; // action to represent receiving of data
+import { REQUEST_DATA, GET_DATA_FIRST } from './types';
 
 export const requestData = () => ({ type: REQUEST_DATA });
 
@@ -12,9 +11,6 @@ const getData = () => {
 export const fetchData = () => (dispatch) => {
   dispatch(requestData());
   return getData().then((things) => {
-    // simulated delay
-    setTimeout(() => {
-      return dispatch(getDataFirst(things));
-    }, 1000);
+    return dispatch(getDataFirst(things));
   });
 };
