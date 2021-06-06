@@ -20,7 +20,7 @@ function Item({
       draggable 
       onClick={() => updateReview()}
       onKeyDown={console.log()} 
-      style={{ backgroundColor: selected ? 'red' : 'lightblue' }}
+      style={{ backgroundColor: selected ? 'red' : '#44d449' }}
       onDragStart={(e) => handleDragStart(e, index)}
       onDragOver={(e) => e.preventDefault()}
       onDragEnter={(e) => handleDragEnter(e, index)}
