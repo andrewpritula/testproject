@@ -7,7 +7,12 @@ const ThemeToggle = () => {
 
   return (
     <label className="switch" htmlFor="toggler-dark">
-      <input type="checkbox" id="toggler-dark" checked={dark} onChange={(e) => toggleDark(e, dark)} />
+      <input 
+        type="checkbox" 
+        id="toggler-dark" 
+        checked={dark} 
+        onChange={(e) => toggleDark(e, dark)}
+      />
       <span className="slider round" />
     </label>
   );

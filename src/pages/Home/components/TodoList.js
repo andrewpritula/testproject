@@ -3,17 +3,47 @@ import './Styles/todoList.css';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 import ThemeContext from '../../../context/ThemeContext';
+import List from './List';
+
+const initialState = [
+  {
+    text: 'Eat',
+    id: uuidv4(),
+    date: new Date().toLocaleString()
+  },
+  {
+    
+    text: 'Work',
+    id: uuidv4(),
+    date: new Date().toLocaleString()
+  },
+  {
+    text: 'Sleep',
+    id: uuidv4(),
+    date: new Date().toLocaleString()
+  },
+];
 
 function TodoList() {
   const { dark } = React.useContext(ThemeContext);
   const { t } = useTranslation('common');
   const [input, setInput] = useState('');
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(initialState);
   const draggingItem = useRef();
   const dragOverItem = useRef();
 
-  const getTodo = (e) => {
+  const handleChange = (e) => {
     setInput(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setList([...list, { text: input, id: uuidv4(), date: new Date().toLocaleString() }]);
+    setInput('');
+  };
+
+  const deleteItem = (id) => {
+    setList(list.filter((item) => item.id !== id));
   };
 
   const handleDragStart = (e, position) => {
@@ -31,49 +61,19 @@ function TodoList() {
     dragOverItem.current = null;
     setList(listCopy);
   };
-  
-  const addTodo = (e) => {
-    e.preventDefault();
-    if (input === '') {
-      alert('enter value');
-    } else {
-      setList([...list, { text: input, id: uuidv4(), date: new Date().toLocaleString() }]);
-      setInput('');
-    }
-  };
-
-  const deleteTodo = (id) => {
-    setList(list.filter((item) => item.id !== id));
-  };
 
   return (
     <div className={dark ? 'container-dark' : 'container'}>
       <h2 id="todo-title">{t('todoTitle')}</h2>
-      <form class-name="todo-form" onSubmit={addTodo}>
-        <input type="text" value={input} onChange={getTodo} />
-        <button className="form-button" type="submit">{t('add')}</button>
-      </form>
-      <ul className="list">
-        {list.map((item, index) => (
-          <li
-            key={item.id}
-            className="list-item"
-            onDragStart={(e) => handleDragStart(e, index)}
-            onDragOver={(e) => e.preventDefault()}
-            onDragEnter={(e) => handleDragEnter(e, index)}
-            draggable
-          >
-            {t('whatToDo')} 
-            {' '}
-            {item.text} 
-            {' '}
-            {t('creationDate')} 
-            {' '}
-            {item.date}
-            <button type="button" className="button" onClick={() => deleteTodo(item.id)}>{t('delete')}</button>
-          </li>
-        ))}
-      </ul>
+      <div className="form-wrapper">
+        <form class-name="todo-form" onSubmit={handleSubmit}>
+          <input type="text" value={input} onChange={handleChange} />
+          <button className="form-button" type="submit">
+            {t('add')}
+          </button>
+        </form>
+      </div>
+      <List list={list} deleteItem={deleteItem} handleDragStart={handleDragStart} handleDragEnter={handleDragEnter} />
     </div>
   );
 }
